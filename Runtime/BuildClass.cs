@@ -11,11 +11,7 @@ namespace GameWorkstore.Automation
         public static void BuildAndroid()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -78,11 +74,7 @@ namespace GameWorkstore.Automation
         public static void BuildIOS()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -107,11 +99,7 @@ namespace GameWorkstore.Automation
         public static void BuildWindows()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -138,11 +126,7 @@ namespace GameWorkstore.Automation
         public static void BuildMacOS()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -169,11 +153,7 @@ namespace GameWorkstore.Automation
         public static void BuildLinux()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -200,11 +180,7 @@ namespace GameWorkstore.Automation
         public static void BuildGameServerWindows()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -231,11 +207,7 @@ namespace GameWorkstore.Automation
         public static void BuildGameServerLinux()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -262,11 +234,7 @@ namespace GameWorkstore.Automation
         public static void BuildUWP()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -303,11 +271,7 @@ namespace GameWorkstore.Automation
         public static void BuildWebGL()
         {
             var buildScript = GetBuildScript();
-            if (buildScript == null)
-            {
-                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
-                return;
-            }
+            if (!Validate(buildScript)) return;
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -394,6 +358,21 @@ namespace GameWorkstore.Automation
             if (UnityEditorInternal.InternalEditorUtility.isHumanControllingUs) return;
             if (ProcessReportIsSuccess(buildReport)) return;
             EditorApplication.Exit(1);
+        }
+
+        private static bool Validate(BuildScript buildScript)
+        {
+            if (buildScript == null)
+            {
+                DebugMessege.Log("Cannot build without a BuildScript.", DebugLevel.ERROR);
+                return false;
+            }
+            if (string.IsNullOrEmpty(buildScript.GameName))
+            {
+                DebugMessege.Log("GameName cannot be null or empty.", DebugLevel.ERROR);
+                return false;
+            }
+            return true;
         }
     }
 }
