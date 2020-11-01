@@ -34,10 +34,10 @@ namespace GameWorkstore.Automation
                 PlayerSettings.Android.keyaliasPass = buildScript.BuildAndroid.KeyStoreSettings.AliasPassword;
             }
 
-            if (buildScript.BuildAndroid.BuildAPK)
+            if (buildScript.BuildAndroid.BuildAAB)
             {
                 //Make
-                const string subpath_aab = "Build/Android/APK/";
+                const string subpath_aab = "Build/Android/AAB/";
                 MakeDirectory(subpath_aab);
 
                 BuildPlayerOptions buildOptions = new BuildPlayerOptions
@@ -52,7 +52,7 @@ namespace GameWorkstore.Automation
                 ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
             }
 
-            if (buildScript.BuildAndroid.BuildAAB)
+            if (buildScript.BuildAndroid.BuildAPK)
             {
                 //Make
                 const string subpath_apk = "Build/Android/APK/";
