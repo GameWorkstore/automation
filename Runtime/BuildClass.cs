@@ -302,7 +302,7 @@ namespace GameWorkstore.Automation
             gameversion = string.IsNullOrEmpty(g)? PlayerSettings.bundleVersion : g;
             bundleversion = 1;
             var argvalue = Arg("-bundleversion");
-            if (string.IsNullOrEmpty(argvalue))
+            if (!string.IsNullOrEmpty(argvalue))
             {
                 if (!int.TryParse(argvalue, out bundleversion))
                 {
