@@ -1,17 +1,16 @@
 ﻿using GameWorkstore.NetworkLibrary;
 using GameWorkstore.Patterns;
 using System;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GameWorkstore.Automation
 {
     [Serializable]
     public class CustomScenes
     {
-        public Scene[] List;
+        [SceneAssetPath]
+        public string[] List;
     }
 
     [Serializable]
@@ -24,7 +23,7 @@ namespace GameWorkstore.Automation
         {
             if (UseCustomScenes)
             {
-                return Scenes.List.Select(t => t.path).ToArray();
+                return Scenes.List;
             }
             return EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
         }
@@ -109,7 +108,7 @@ namespace GameWorkstore.Automation
         [ButtonMethod] public static void WebGL() { BuildClass.BuildWebGL(); }
         [ButtonMethod] public static void UWP() { BuildClass.BuildUWP(); }
 
-        [ButtonMethod] public static void GameServerWindows() { BuildClass.BuildWindows(); }
-        [ButtonMethod] public static void GameServerLinux() { BuildClass.BuildMacOS(); }
+        [ButtonMethod] public static void GameServerWindows() { BuildClass.BuildGameServerWindows(); }
+        [ButtonMethod] public static void GameServerLinux() { BuildClass.BuildGameServerLinux(); }
     }
 }

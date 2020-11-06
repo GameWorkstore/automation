@@ -223,7 +223,7 @@ namespace GameWorkstore.Automation
             BuildPlayerOptions buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildGameServerLinux.GetScenes(),
-                locationPathName = "Build/GameServerLinux/" + buildScript.GameName + ".exe",
+                locationPathName = "Build/GameServerLinux/" + buildScript.GameName,
                 target = BuildTarget.StandaloneLinux64,
                 options = BuildOptions.EnableHeadlessMode
             };
