@@ -54,7 +54,7 @@ namespace GameWorkstore.Automation
         [ConditionalField("UseKeystore")] public KeyStoreSettingsStruct KeyStoreSettings;
     }
 
-    [CreateAssetMenu(fileName = "BuildScript", menuName = "Create/Automation/BuildScript")]
+    [CreateAssetMenu(fileName = "BuildScript", menuName = "Automation/BuildScript")]
     public class BuildScript : ScriptableObject
     {
         public string GameName;

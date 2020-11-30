@@ -7,6 +7,6 @@
   "description": "Automate your projects with this powerful tool with many build options!",
   "icon": ".icon.png",
   "dependencies": {
-    "com.gameworkstore.patterns": "1.0.3"
+    "com.gameworkstore.patterns": "1.0.4"
   }
 }
