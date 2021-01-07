@@ -302,22 +302,14 @@ namespace GameWorkstore.Automation
             var g = Arg("-gameversion");
             if (string.IsNullOrEmpty(g))
 			{
-                var envg = Arg("-envgameversion");
-				if (!string.IsNullOrEmpty(envg))
-				{
-                    g = Environment.GetEnvironmentVariable(envg);
-                }
+                g = Arg("-buildVersion");
 			}
             gameversion = string.IsNullOrEmpty(g)? PlayerSettings.bundleVersion : g;
 
             var bv = Arg("-bundleversion");
 			if (string.IsNullOrEmpty(bv))
 			{
-                var envbv = Arg("-envbundleversion");
-                if (!string.IsNullOrEmpty(envbv))
-                {
-                    bv = Environment.GetEnvironmentVariable(envbv);
-                }
+                bv = Arg("-androidVersionCode");
             }
             bundleversion = int.TryParse(bv, out bundleversion)? bundleversion : 1;
 
