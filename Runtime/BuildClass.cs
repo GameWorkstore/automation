@@ -1,4 +1,5 @@
 ﻿using GameWorkstore.Patterns;
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
@@ -299,16 +300,27 @@ namespace GameWorkstore.Automation
         public static void Version(out string gameversion, out int bundleversion)
         {
             var g = Arg("-gameversion");
+            if (string.IsNullOrEmpty(g))
+			{
+                var envg = Arg("-envgameversion");
+				if (!string.IsNullOrEmpty(envg))
+				{
+                    g = Environment.GetEnvironmentVariable(envg);
+                }
+			}
             gameversion = string.IsNullOrEmpty(g)? PlayerSettings.bundleVersion : g;
-            bundleversion = 1;
-            var argvalue = Arg("-bundleversion");
-            if (!string.IsNullOrEmpty(argvalue))
-            {
-                if (!int.TryParse(argvalue, out bundleversion))
+
+            var bv = Arg("-bundleversion");
+			if (string.IsNullOrEmpty(bv))
+			{
+                var envbv = Arg("-envbundleversion");
+                if (!string.IsNullOrEmpty(envbv))
                 {
-                    bundleversion = 1;
+                    bv = Environment.GetEnvironmentVariable(envbv);
                 }
             }
+            bundleversion = int.TryParse(bv, out bundleversion)? bundleversion : 1;
+
             Debug.Log("GameVersion:[" + gameversion + "][" + bundleversion + "]");
         }
 
