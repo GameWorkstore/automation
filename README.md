@@ -4,7 +4,7 @@ Automate your projects with this powerful tool with many build options!
 # How to install
 
 At package.json, add these 2 lines of code:
-> "com.gameworkstore.automation": "https://github.com/GameWorkstore/automation.git?path=Assets/Package"
+> "com.gameworkstore.automation": "git://github.com/GameWorkstore/automation.git?path=Assets/Package"
 
 > "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git?path=Assets/Package"
 
