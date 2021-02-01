@@ -17,15 +17,12 @@ namespace GameWorkstore.Automation
     public class BuildBase
     {
         public bool UseCustomScenes = false;
+        public bool Development = false;
         [ConditionalField("UseCustomScenes")] public CustomScenes Scenes = new CustomScenes();
 
         public string[] GetScenes()
         {
-            if (UseCustomScenes)
-            {
-                return Scenes.List;
-            }
-            return EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
+            return UseCustomScenes ? Scenes.List : EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
         }
     }
 

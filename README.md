@@ -4,20 +4,21 @@ Automate your projects with this powerful tool with many build options!
 # How to install
 
 At package.json, add these 2 lines of code:
-> "com.gameworkstore.automation": "https://github.com/GameWorkstore/automation.git"
+> "com.gameworkstore.automation": "https://github.com/GameWorkstore/automation.git?path=Assets/Package"
 
-> "com.gameworkstore.patterns": "https://github.com/GameWorkstore/patterns.git"
+> "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git?path=Assets/Package"
 
 And wait for unity to download and compile the package.
 
-for update package for a newer version, click in [Help->PackageUpdate->GameWorkstore.Automation]
+for update package for a newer version, install UpmGitExtension and update on [ Window > Package Manager ]!
+> https://github.com/mob-sakai/UpmGitExtension
 
 # Automate Builds
 
 On a windows bat file, you invoke unity to build your game as the example below:
 > set CODEVERSION=23
 
-> set VERSION=1.0.0.%CODEVERSION%
+> set VERSION=1.0.%CODEVERSION%
 
 > call %UNITYPATH% -executeMethod BuildClass.BuildAndroid -projectPath %WORKSPACE% -gameversion %VERSION% -bundleversion %CODEVERSION%
 

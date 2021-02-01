@@ -1,5 +1,4 @@
 ﻿using GameWorkstore.Patterns;
-using System;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
@@ -17,9 +16,9 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int bundleversion);
-                PlayerSettings.bundleVersion = gameversion;
-                PlayerSettings.Android.bundleVersionCode = bundleversion;
+                Version(out var gameVersion, out var bundleVersion);
+                PlayerSettings.bundleVersion = gameVersion;
+                PlayerSettings.Android.bundleVersionCode = bundleVersion;
             }
 
             //Backend
@@ -38,15 +37,15 @@ namespace GameWorkstore.Automation
             if (buildScript.BuildAndroid.BuildAAB)
             {
                 //Make
-                const string subpath_aab = "Build/Android/AAB/";
-                MakeDirectory(subpath_aab);
+                const string subPathAab = "Build/Android/AAB/";
+                MakeDirectory(subPathAab);
 
-                BuildPlayerOptions buildOptions = new BuildPlayerOptions
+                var buildOptions = new BuildPlayerOptions
                 {
                     scenes = buildScript.BuildAndroid.GetScenes(),
-                    locationPathName = subpath_aab + buildScript.GameName + ".aab",
+                    locationPathName = subPathAab + buildScript.GameName + ".aab",
                     target = BuildTarget.Android,
-                    options = BuildOptions.None
+                    options = GetOptions(buildScript.BuildAndroid)
                 };
 
                 EditorUserBuildSettings.buildAppBundle = true;
@@ -56,15 +55,15 @@ namespace GameWorkstore.Automation
             if (buildScript.BuildAndroid.BuildAPK)
             {
                 //Make
-                const string subpath_apk = "Build/Android/APK/";
-                MakeDirectory(subpath_apk);
+                const string subPathAPK = "Build/Android/APK/";
+                MakeDirectory(subPathAPK);
 
-                BuildPlayerOptions buildOptions = new BuildPlayerOptions
+                var buildOptions = new BuildPlayerOptions
                 {
                     scenes = buildScript.BuildAndroid.GetScenes(),
-                    locationPathName = subpath_apk + buildScript.GameName + ".apk",
+                    locationPathName = subPathAPK + buildScript.GameName + ".apk",
                     target = BuildTarget.Android,
-                    options = BuildOptions.None
+                    options = GetOptions(buildScript.BuildAndroid)
                 };
 
                 EditorUserBuildSettings.buildAppBundle = false;
@@ -80,18 +79,18 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int bundleversion);
-                PlayerSettings.bundleVersion = gameversion;
-                PlayerSettings.iOS.buildNumber = bundleversion.ToString();
+                Version(out var gameVersion, out var bundleVersion);
+                PlayerSettings.bundleVersion = gameVersion;
+                PlayerSettings.iOS.buildNumber = bundleVersion.ToString();
             }
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildIOS.GetScenes(),
                 locationPathName = "Build/iOS/" + buildScript.GameName,
                 target = BuildTarget.iOS,
-                options = BuildOptions.None
+                options = GetOptions(buildScript.BuildIOS)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -105,20 +104,20 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
             }
 
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildWindows.ScriptingBackend);
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildWindows.GetScenes(),
                 locationPathName = "Build/Windows/" + buildScript.GameName + ".exe",
                 target = BuildTarget.StandaloneWindows64,
-                options = BuildOptions.None
+                options = GetOptions(buildScript.BuildWindows)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -132,8 +131,8 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
             }
 
             //Backend
@@ -145,7 +144,7 @@ namespace GameWorkstore.Automation
                 scenes = buildScript.BuildMacOS.GetScenes(),
                 locationPathName = "Build/MacOS/" + buildScript.GameName + ".app",
                 target = BuildTarget.StandaloneOSX,
-                options = BuildOptions.None
+                options = GetOptions(buildScript.BuildMacOS)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -159,20 +158,20 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
             }
 
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildLinux.ScriptingBackend);
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildLinux.GetScenes(),
                 locationPathName = "Build/Linux/" + buildScript.GameName,
                 target = BuildTarget.StandaloneLinux64,
-                options = BuildOptions.None
+                options = GetOptions(buildScript.BuildLinux)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -186,20 +185,20 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
             }
 
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildGameServerWindows.ScriptingBackend);
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildGameServerWindows.GetScenes(),
                 locationPathName = "Build/GameServerWindows/" + buildScript.GameName + ".exe",
                 target = BuildTarget.StandaloneWindows64,
-                options = BuildOptions.EnableHeadlessMode
+                options = GetOptions(buildScript.BuildGameServerWindows,BuildOptions.EnableHeadlessMode)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -213,20 +212,20 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
             }
 
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildGameServerLinux.ScriptingBackend);
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildGameServerLinux.GetScenes(),
                 locationPathName = "Build/GameServerLinux/" + buildScript.GameName,
                 target = BuildTarget.StandaloneLinux64,
-                options = BuildOptions.EnableHeadlessMode
+                options = GetOptions(buildScript.BuildGameServerLinux,BuildOptions.EnableHeadlessMode)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -240,11 +239,11 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
-                if (System.Version.TryParse(gameversion, out System.Version version))
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
+                if (System.Version.TryParse(version, out var iVersion))
                 {
-                    PlayerSettings.WSA.packageVersion = version;
+                    PlayerSettings.WSA.packageVersion = iVersion;
                 }
                 else
                 {
@@ -258,12 +257,12 @@ namespace GameWorkstore.Automation
             //PlayerSettings.SetScriptingBackend(BuildTargetGroup.WSA, buildScript.BuildUWP.ScriptingBackend);
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildUWP.GetScenes(),
                 locationPathName = "Build/UWP/",
-                target = BuildTarget.StandaloneWindows64,
-                options = BuildOptions.None
+                target = BuildTarget.WSAPlayer,
+                options = GetOptions(buildScript.BuildUWP)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
@@ -277,43 +276,39 @@ namespace GameWorkstore.Automation
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
-                Version(out string gameversion, out int _);
-                PlayerSettings.bundleVersion = gameversion;
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
             }
 
-            //Backend
-            //Always IL2CPP
-            //PlayerSettings.SetScriptingBackend(BuildTargetGroup.WSA, buildScript.BuildUWP.ScriptingBackend);
-
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildWebGL.GetScenes(),
                 locationPathName = "Build/WebGL/",
                 target = BuildTarget.WebGL,
-                options = BuildOptions.None
+                options = GetOptions(buildScript.BuildWebGL)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
         }
 
-        public static void Version(out string gameversion, out int bundleversion)
+        public static void Version(out string gameVersion, out int bundleVersion)
         {
             var g = Arg("-gameversion");
             if (string.IsNullOrEmpty(g))
 			{
                 g = Arg("-buildVersion");
 			}
-            gameversion = string.IsNullOrEmpty(g)? PlayerSettings.bundleVersion : g;
+            gameVersion = string.IsNullOrEmpty(g)? PlayerSettings.bundleVersion : g;
 
             var bv = Arg("-bundleversion");
 			if (string.IsNullOrEmpty(bv))
 			{
                 bv = Arg("-androidVersionCode");
             }
-            bundleversion = int.TryParse(bv, out bundleversion)? bundleversion : 1;
+            bundleVersion = int.TryParse(bv, out bundleVersion)? bundleVersion : 1;
 
-            Debug.Log("GameVersion:[" + gameversion + "][" + bundleversion + "]");
+            Debug.Log("GameVersion:[" + gameVersion + "][" + bundleVersion + "]");
         }
 
         public static string Arg(string argument)
@@ -350,6 +345,11 @@ namespace GameWorkstore.Automation
                 return AssetDatabase.LoadAssetAtPath<BuildScript>(path);
             }
             return null;
+        }
+
+        private static BuildOptions GetOptions(BuildBase buildBase, BuildOptions baseOptions = BuildOptions.None)
+        {
+            return (buildBase.Development ? BuildOptions.Development : BuildOptions.None) | baseOptions;
         }
 
         public static bool ProcessReportIsSuccess(BuildReport buildReport)

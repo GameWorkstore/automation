@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12163007ee079c45b98839ab1003048, type: 3}
+  m_Name: BuildScript
+  m_EditorClassIdentifier: 
+  GameName: 
+  ViewBuildAndroid: 0
+  BuildAndroid:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+    UseKeystore: 0
+    BuildAPK: 0
+    BuildAAB: 1
+    ScriptingBackend: 1
+    KeyStoreSettings:
+      KeystorePath: 
+      KeystorePassword: 
+      AliasName: 
+      AliasPassword: 
+  ViewBuildIOS: 0
+  BuildIOS:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+  ViewBuildWindows: 0
+  BuildWindows:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptingBackend: 1
+  ViewBuildMacOS: 0
+  BuildMacOS:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptingBackend: 1
+  ViewBuildLinux: 0
+  BuildLinux:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptingBackend: 1
+  ViewBuildUWP: 0
+  BuildUWP:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+  ViewBuildWebGL: 0
+  BuildWebGL:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+  ViewBuildGameServerWindows: 0
+  BuildGameServerWindows:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptingBackend: 1
+  ViewBuildGameServerLinux: 0
+  BuildGameServerLinux:
+    UseCustomScenes: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptingBackend: 1
