@@ -1,6 +1,7 @@
 ﻿using GameWorkstore.NetworkLibrary;
 using GameWorkstore.Patterns;
 using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ namespace GameWorkstore.Automation
     [Serializable]
     public class CustomScenes
     {
-        [SceneAssetPath]
-        public string[] List;
+        public SceneAssetPath[] List;
     }
 
     [Serializable]
@@ -22,7 +22,12 @@ namespace GameWorkstore.Automation
 
         public string[] GetScenes()
         {
-            return UseCustomScenes ? Scenes.List : EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
+            return UseCustomScenes ? Scenes.List.Select(GetSceneName).ToArray() : EditorBuildSettingsScene.GetActiveSceneList(EditorBuildSettings.scenes);
+        }
+
+        private static string GetSceneName(SceneAssetPath sceneAssetPath)
+        {
+            return sceneAssetPath.Scene;
         }
     }
 

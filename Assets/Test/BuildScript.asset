@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12163007ee079c45b98839ab1003048, type: 3}
   m_Name: BuildScript
   m_EditorClassIdentifier: 
-  GameName: 
+  GameName: AutomationTest
   ViewBuildAndroid: 0
   BuildAndroid:
     UseCustomScenes: 0
@@ -74,10 +74,12 @@ MonoBehaviour:
     Scenes:
       List: []
     ScriptingBackend: 1
-  ViewBuildGameServerLinux: 0
+  ViewBuildGameServerLinux: 1
   BuildGameServerLinux:
-    UseCustomScenes: 0
+    UseCustomScenes: 1
     Development: 0
     Scenes:
-      List: []
-    ScriptingBackend: 1
+      List:
+      - Scene: Assets/Scenes/Sample.unity
+        Guid: e7184e0cf43524eeb943a9cedb593c1e
+    ScriptingBackend: 0
