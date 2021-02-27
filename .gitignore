@@ -5,3 +5,4 @@ UserSettings/
 .idea/
 obj/
 *.sln
+*.csproj
