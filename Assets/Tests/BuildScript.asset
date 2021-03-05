@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameName: AutomationTest
   GameVersionWriterConfig:
-    Enabled: 0
+    Enabled: 1
     Path: /Scripts/Util/
     Namespace: Default
   ViewBuildAndroid: 0
