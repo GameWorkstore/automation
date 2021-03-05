@@ -57,12 +57,19 @@ namespace GameWorkstore.Automation
     }
 
     [Serializable]
-    public class GameVersionWriterConfig
+    public class AutoVersionWriter
     {
-        public bool Enabled = false;
+        public bool Enabled;
         [Tooltip("Path starting from Assets folder")]
-        public string Path = "/Scripts/Util/";
-        public string Namespace = "Default";
+        public string Path;
+        public string Namespace;
+
+        public AutoVersionWriter()
+        {
+            Enabled = true;
+            Path = "Scripts/Version/";
+            Namespace = "Unset.Namespace";
+        }
     }
 
     [CreateAssetMenu(fileName = "BuildScript", menuName = "Automation/BuildScript")]
@@ -70,7 +77,7 @@ namespace GameWorkstore.Automation
     {
         public string GameName;
 
-        public GameVersionWriterConfig GameVersionWriterConfig;
+        public AutoVersionWriter GameVersionWriterConfig;
 
         [Header("Android")]
         public bool ViewBuildAndroid = false;

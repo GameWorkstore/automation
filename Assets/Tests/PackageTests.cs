@@ -1,9 +1,6 @@
-using System.Collections;
 using System.IO;
 using GameWorkstore.Automation;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 
 public class PackageTests
 {
@@ -13,19 +10,33 @@ public class PackageTests
         var buildScript = BuildClass.GetBuildScript();
         Assert.IsNotNull(buildScript);
     }
-    
+
+    [Test]
+    public void VersionWriter_InitialValues()
+    {
+        var gameVersion = new AutoVersionWriter();
+
+        Assert.AreEqual(gameVersion.Enabled, true);
+        Assert.AreEqual(gameVersion.Path, "Scripts/Version/");
+        Assert.AreEqual(gameVersion.Namespace, "Unset.Namespace");
+    }
+
+
     // A Test behaves as an ordinary method
     [Test]
     public void VersionWriter_WritesFile()
     {
         var buildScript = BuildClass.GetBuildScript();
 
-        var path = VersionWriter.GetFilePath(buildScript);
-        Debug.Log(path);
+        var filePath = VersionWriter.GetFilePath(buildScript);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+        buildScript.GameVersionWriterConfig.Enabled = true;
 
-        Assert.True(File.Exists(path));
-        
-        //VersionWriter.WriteVersion();
+        VersionWriter.WriteVersion(buildScript);
+        Assert.True(File.Exists(filePath));
     }
 
     /*// A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

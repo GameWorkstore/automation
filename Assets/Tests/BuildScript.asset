@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: BuildScript
   m_EditorClassIdentifier: 
   GameName: AutomationTest
+  GameVersionWriterConfig:
+    Enabled: 0
+    Path: /Scripts/Util/
+    Namespace: Default
   ViewBuildAndroid: 0
   BuildAndroid:
     UseCustomScenes: 0

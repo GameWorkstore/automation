@@ -5,6 +5,7 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "GameWorkstore.Automation",
+        "GameWorkstore.Automation.Editor",
         "GameWorkstore.Patterns"
     ],
     "includePlatforms": [],

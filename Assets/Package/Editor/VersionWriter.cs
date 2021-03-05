@@ -16,22 +16,24 @@ namespace GameWorkstore.Automation
 
         public void OnPreprocessBuild(BuildReport report)
         {
-            WriteVersion();
+            var buildScript = BuildClass.GetBuildScript();
+            WriteVersion(buildScript);
         }
 
         [DidReloadScripts]
         public static void WriteVersion()
         {
-            return;
             var buildScript = BuildClass.GetBuildScript();
-            if (!BuildClass.Validate(buildScript)) return;
+            WriteVersion(buildScript);
+        }
 
-            var config = buildScript.GameVersionWriterConfig;
-            var finalDir = Path.Combine(Application.dataPath, config.Path);
-            var finalPath = Path.Combine(finalDir, FileName);
+        public static void WriteVersion(BuildScript script)
+        {
+            if (script == null) return;
+            if (!script.GameVersionWriterConfig.Enabled) return;
 
             var newText =
-                "namespace " + config.Namespace + "\r\n" +
+                "namespace " + script.GameVersionWriterConfig.Namespace + "\r\n" +
                 "{"+
                     "\tpublic static class GameVersion\r\n" +
                     "\t{\r\n" +
@@ -39,21 +41,25 @@ namespace GameWorkstore.Automation
                         "\t\t" + FormatVar("AndroidBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
                     "\t}\r\n" +
                 "}";
-            if (!Directory.Exists(finalDir))
+
+            var directoryPath = GetDirectory(script);
+            if (!Directory.Exists(directoryPath))
             {
-                Directory.CreateDirectory(finalDir);
+                Directory.CreateDirectory(directoryPath);
             }
 
+            var filePath = GetFilePath(script);
+
             var currentText = string.Empty;
-            if (File.Exists(finalPath))
+            if (File.Exists(filePath))
             {
-                currentText = File.ReadAllText(finalPath);
+                currentText = File.ReadAllText(filePath);
             }
 
             if (currentText == newText) return;
             Debug.Log("Updated GameVersion.cs");
 
-            File.WriteAllText(finalPath, newText);
+            File.WriteAllText(filePath, newText);
             AssetDatabase.Refresh();
         }
 
@@ -69,6 +75,10 @@ namespace GameWorkstore.Automation
 
         public static string GetDirectory(BuildScript script)
         {
+            if (script.GameVersionWriterConfig.Path.StartsWith("/"))
+            {
+                return Path.Combine(Application.dataPath, script.GameVersionWriterConfig.Path.Substring(1));
+            }
             return Path.Combine(Application.dataPath, script.GameVersionWriterConfig.Path);
         }
     }
