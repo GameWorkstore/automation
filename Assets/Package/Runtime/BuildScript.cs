@@ -56,10 +56,21 @@ namespace GameWorkstore.Automation
         [ConditionalField("UseKeystore")] public KeyStoreSettingsStruct KeyStoreSettings;
     }
 
+    [Serializable]
+    public class GameVersionWriterConfig
+    {
+        public bool Enabled = false;
+        [Tooltip("Path starting from Assets folder")]
+        public string Path = "/Scripts/Util/";
+        public string Namespace = "Default";
+    }
+
     [CreateAssetMenu(fileName = "BuildScript", menuName = "Automation/BuildScript")]
     public class BuildScript : ScriptableObject
     {
         public string GameName;
+
+        public GameVersionWriterConfig GameVersionWriterConfig;
 
         [Header("Android")]
         public bool ViewBuildAndroid = false;

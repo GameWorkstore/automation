@@ -336,7 +336,7 @@ namespace GameWorkstore.Automation
             return Application.dataPath.Substring(0, Application.dataPath.Length - 6);
         }
 
-        private static BuildScript GetBuildScript(bool logPath = false)
+        public static BuildScript GetBuildScript(bool logPath = false)
         {
             foreach (var guid in AssetDatabase.FindAssets("t:BuildScript"))
             {
@@ -364,7 +364,7 @@ namespace GameWorkstore.Automation
             EditorApplication.Exit(1);
         }
 
-        private static bool Validate(BuildScript buildScript)
+        public static bool Validate(BuildScript buildScript)
         {
             if (buildScript == null)
             {
@@ -374,6 +374,11 @@ namespace GameWorkstore.Automation
             if (string.IsNullOrEmpty(buildScript.GameName))
             {
                 DebugMessege.Log("GameName cannot be null or empty.", DebugLevel.ERROR);
+                return false;
+            }
+            if(buildScript.GameVersionWriterConfig.Enabled && string.IsNullOrEmpty(buildScript.GameVersionWriterConfig.Namespace))
+            {
+                DebugMessege.Log("GameVersionWriter namespace cannot be null or empty.", DebugLevel.ERROR);
                 return false;
             }
             return true;
