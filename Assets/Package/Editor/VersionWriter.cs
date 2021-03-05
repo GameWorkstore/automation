@@ -32,13 +32,13 @@ namespace GameWorkstore.Automation
             if (script == null) return;
             if (!script.GameVersionWriterConfig.Enabled) return;
 
-            var newText =
+            var content =
                 "namespace " + script.GameVersionWriterConfig.Namespace + "\r\n" +
-                "{"+
+                "{\r\n"+
                     "\tpublic static class GameVersion\r\n" +
                     "\t{\r\n" +
-                        "\t\t"+ FormatVar("IosBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
-                        "\t\t" + FormatVar("AndroidBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
+                        "\t"+ FormatVar("IosBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
+                        "\t" + FormatVar("AndroidBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
                     "\t}\r\n" +
                 "}";
 
@@ -56,10 +56,10 @@ namespace GameWorkstore.Automation
                 currentText = File.ReadAllText(filePath);
             }
 
-            if (currentText == newText) return;
+            if (currentText == content) return;
             Debug.Log("Updated GameVersion.cs");
 
-            File.WriteAllText(filePath, newText);
+            File.WriteAllText(filePath, content);
             AssetDatabase.Refresh();
         }
 
