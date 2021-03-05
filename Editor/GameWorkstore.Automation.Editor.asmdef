@@ -1,0 +1,19 @@
+{
+    "name": "GameWorkstore.Automation.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:381921da55d39454f9a6ce7095941507",
+        "GUID:c32d36751e998d74999be5c29b033d6e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
