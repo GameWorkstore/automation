@@ -1,0 +1,17 @@
+{
+  "name": "com.gameworkstore.automation",
+  "version": "1.0.5",
+  "displayName": "GameWorkstore Automation",
+  "description": "Automate your projects with this powerful tool with many build options!",
+  "unity": "2020.1",
+  "icon": ".icon.png",
+  "keywords": [ "build", "automation" ],
+  "author": {
+    "name": "Game Workstore",
+    "email": "contact@gameworkstore.com",
+    "url": "https://gameworkstore.com"
+  },
+  "dependencies": {
+    "com.gameworkstore.patterns": "1.0.6"
+  }
+}
