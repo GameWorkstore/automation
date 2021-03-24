@@ -8,11 +8,11 @@
       "hash": "c5bd85b033ee9994cf7b4d711479e2602d42c639"
     },
     "com.gameworkstore.patterns": {
-      "version": "git://github.com/GameWorkstore/patterns.git#1.0.6",
+      "version": "git://github.com/GameWorkstore/patterns.git#1.0.7",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "fa6c06db14bfc1a5b1473e6e5067f3f5d6ed1d46"
+      "hash": "a7fe56feb4ec104636cfa4f874fe896000c73f54"
     },
     "com.unity.2d.animation": {
       "version": "5.0.4",

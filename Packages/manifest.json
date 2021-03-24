@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "com.coffee.upm-git-extension": "git://github.com/mob-sakai/UpmGitExtension.git",
-    "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git#1.0.6",
     "com.unity.2d.animation": "5.0.4",
     "com.unity.2d.psdimporter": "4.0.2",
     "com.unity.2d.sprite": "1.0.0",
@@ -41,6 +40,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git#1.0.7"
   }
 }
