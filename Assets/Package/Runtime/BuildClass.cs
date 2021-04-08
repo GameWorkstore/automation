@@ -25,14 +25,7 @@ namespace GameWorkstore.Automation
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, buildScript.BuildAndroid.ScriptingBackend);
 
             //Keystore Config
-            if (buildScript.BuildAndroid.UseKeystore)
-            {
-                PlayerSettings.Android.useCustomKeystore = true;
-                PlayerSettings.Android.keystoreName = GetProjectPath() + buildScript.BuildAndroid.KeyStoreSettings.KeystorePath;
-                PlayerSettings.Android.keystorePass = buildScript.BuildAndroid.KeyStoreSettings.KeystorePassword;
-                PlayerSettings.Android.keyaliasName = buildScript.BuildAndroid.KeyStoreSettings.AliasName;
-                PlayerSettings.Android.keyaliasPass = buildScript.BuildAndroid.KeyStoreSettings.AliasPassword;
-            }
+            SetAndroidSignCredentials(buildScript);
 
             if (buildScript.BuildAndroid.BuildAAB)
             {
@@ -382,6 +375,24 @@ namespace GameWorkstore.Automation
                 return false;
             }
             return true;
+        }
+
+        [MenuItem("Help/Automation/SetAndroidCredentials")]
+        public static void SetAndroidCredentials()
+        {
+            var buildScript = BuildClass.GetBuildScript();
+            BuildClass.SetAndroidSignCredentials(buildScript);
+        }
+
+        public static void SetAndroidSignCredentials(BuildScript buildScript)
+        {
+            if(buildScript == null) return;
+            if (!buildScript.BuildAndroid.UseKeystore) return;
+            PlayerSettings.Android.useCustomKeystore = true;
+            PlayerSettings.Android.keystoreName = GetProjectPath() + buildScript.BuildAndroid.KeyStoreSettings.KeystorePath;
+            PlayerSettings.Android.keystorePass = buildScript.BuildAndroid.KeyStoreSettings.KeystorePassword;
+            PlayerSettings.Android.keyaliasName = buildScript.BuildAndroid.KeyStoreSettings.AliasName;
+            PlayerSettings.Android.keyaliasPass = buildScript.BuildAndroid.KeyStoreSettings.AliasPassword;
         }
     }
 }

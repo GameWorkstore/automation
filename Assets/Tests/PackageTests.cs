@@ -1,6 +1,7 @@
 using System.IO;
 using GameWorkstore.Automation;
 using NUnit.Framework;
+using UnityEditor;
 
 public class PackageTests
 {
@@ -39,13 +40,21 @@ public class PackageTests
         Assert.True(File.Exists(filePath));
     }
 
-    /*// A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator PackageTestsWithEnumeratorPasses()
+    [Test]
+    public void AndroidSignConfigurationIsSet()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
-    }*/
+        PlayerSettings.Android.useCustomKeystore = false;
+        PlayerSettings.Android.keystoreName = string.Empty;
+        PlayerSettings.Android.keystorePass = string.Empty;
+        PlayerSettings.Android.keyaliasName = string.Empty;
+        PlayerSettings.Android.keyaliasPass = string.Empty;
+
+        var buildScript = BuildClass.GetBuildScript();
+        BuildClass.SetAndroidSignCredentials(buildScript);
+        Assert.AreEqual(true,PlayerSettings.Android.useCustomKeystore);
+        Assert.AreEqual("Assets/Store/TestKeyStore.keystore",PlayerSettings.Android.keystoreName);
+        Assert.AreEqual("testkey123",PlayerSettings.Android.keystorePass);
+        Assert.AreEqual("testalias",PlayerSettings.Android.keyaliasName);
+        Assert.AreEqual("testalias123",PlayerSettings.Android.keyaliasPass);
+    }
 }

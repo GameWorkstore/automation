@@ -1,11 +1,12 @@
 {
   "dependencies": {
     "com.coffee.upm-git-extension": "git://github.com/mob-sakai/UpmGitExtension.git",
+    "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git#1.0.7",
     "com.unity.2d.animation": "5.0.4",
     "com.unity.2d.psdimporter": "4.0.2",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "5.1.1",
-    "com.unity.ide.rider": "2.0.7",
+    "com.unity.ide.rider": "3.0.5",
     "com.unity.ide.visualstudio": "2.0.7",
     "com.unity.ide.vscode": "1.2.3",
     "com.unity.toolchain.macos-x86_64-linux-x86_64": "0.1.20-preview",
@@ -40,7 +41,6 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git#1.0.7"
+    "com.unity.modules.xr": "1.0.0"
   }
 }

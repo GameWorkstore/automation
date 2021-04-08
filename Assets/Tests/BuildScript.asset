@@ -17,21 +17,21 @@ MonoBehaviour:
     Enabled: 1
     Path: /Scripts/Util/
     Namespace: Default
-  ViewBuildAndroid: 0
+  ViewBuildAndroid: 1
   BuildAndroid:
     UseCustomScenes: 0
     Development: 0
     Scenes:
       List: []
-    UseKeystore: 0
+    UseKeystore: 1
     BuildAPK: 0
     BuildAAB: 1
     ScriptingBackend: 1
     KeyStoreSettings:
-      KeystorePath: 
-      KeystorePassword: 
-      AliasName: 
-      AliasPassword: 
+      KeystorePath: Assets/Store/TestKeyStore.keystore
+      KeystorePassword: testkey123
+      AliasName: testalias
+      AliasPassword: testalias123
   ViewBuildIOS: 0
   BuildIOS:
     UseCustomScenes: 0
