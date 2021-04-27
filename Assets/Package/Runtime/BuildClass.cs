@@ -132,7 +132,7 @@ namespace GameWorkstore.Automation
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildMacOS.ScriptingBackend);
 
             //Options
-            BuildPlayerOptions buildOptions = new BuildPlayerOptions
+            var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildMacOS.GetScenes(),
                 locationPathName = "Build/MacOS/" + buildScript.GameName + ".app",
@@ -219,6 +219,34 @@ namespace GameWorkstore.Automation
                 locationPathName = "Build/GameServerLinux/" + buildScript.GameName,
                 target = BuildTarget.StandaloneLinux64,
                 options = GetOptions(buildScript.BuildGameServerLinux,BuildOptions.EnableHeadlessMode)
+            };
+
+            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+        }
+
+        public static void BuildGameServerMacOS()
+        {
+            var buildScript = GetBuildScript();
+            if (!Validate(buildScript)) return;
+
+            //Version
+            if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
+            {
+                Version(out var version, out _);
+                PlayerSettings.bundleVersion = version;
+            }
+
+            var buildConfig = buildScript.BuildGameServerMacOS;
+            //Backend
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildConfig.ScriptingBackend);
+
+            //Options
+            var buildOptions = new BuildPlayerOptions
+            {
+                scenes = buildConfig.GetScenes(),
+                locationPathName = "Build/GameServerMacOS/" + buildScript.GameName + ".app",
+                target = BuildTarget.StandaloneOSX,
+                options = GetOptions(buildConfig,BuildOptions.EnableHeadlessMode)
             };
 
             ProcessReport(BuildPipeline.BuildPlayer(buildOptions));

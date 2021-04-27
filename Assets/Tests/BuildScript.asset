@@ -87,3 +87,12 @@ MonoBehaviour:
       - Scene: Assets/Scenes/Sample.unity
         Guid: e7184e0cf43524eeb943a9cedb593c1e
     ScriptingBackend: 0
+  ViewBuildGameServerMacOS: 1
+  BuildGameServerMacOS:
+    UseCustomScenes: 1
+    Development: 0
+    Scenes:
+      List:
+      - Scene: Assets/Scenes/Sample.unity
+        Guid: e7184e0cf43524eeb943a9cedb593c1e
+    ScriptingBackend: 0

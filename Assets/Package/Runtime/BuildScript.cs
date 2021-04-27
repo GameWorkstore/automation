@@ -114,6 +114,10 @@ namespace GameWorkstore.Automation
         public bool ViewBuildGameServerLinux = false;
         [ConditionalField("ViewBuildGameServerLinux")] public BuildStandalone BuildGameServerLinux = new BuildStandalone();
 
+        [Header("GameServer - MacOS")]
+        public bool ViewBuildGameServerMacOS = false;
+        [ConditionalField(("ViewBuildGameServerMacOS"))] public BuildStandalone BuildGameServerMacOS = new BuildStandalone();
+        
         [Header("Build")]
         public HelpBox build = new HelpBox("Build Now", HelpBoxType.Info);
 
@@ -129,5 +133,6 @@ namespace GameWorkstore.Automation
 
         [ButtonMethod] public static void GameServerWindows() { BuildClass.BuildGameServerWindows(); }
         [ButtonMethod] public static void GameServerLinux() { BuildClass.BuildGameServerLinux(); }
+        [ButtonMethod] public static void GameServerMacOS() { BuildClass.BuildGameServerMacOS(); }
     }
 }
