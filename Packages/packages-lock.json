@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.gameworkstore.patterns": {
-      "version": "git://github.com/GameWorkstore/patterns.git",
+      "version": "git://github.com/GameWorkstore/patterns.git#1.1.2",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "2cd4588dae23b54af37b97af43152981372623cc"
+      "hash": "acec284154b11e5fa7193b0adfb4c52f682b49f0"
     },
     "com.unity.2d.animation": {
       "version": "6.0.3",
