@@ -1,8 +1,6 @@
 using System.IO;
 using GameWorkstore.Automation;
 using NUnit.Framework;
-using UnityEditor;
-using UnityEngine;
 
 public class TestBench_Editor
 {
@@ -96,7 +94,7 @@ public class TestBench_Editor
     {
         var buildScript = BuildClass.GetBuildScript();
         Assert.IsNotNull(buildScript);
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/iOS/");
+        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/iOS/", buildScript.GameName);
         if (Directory.Exists(path))
         {
             Directory.Delete(path, true);

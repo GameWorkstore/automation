@@ -500,8 +500,9 @@ namespace GameWorkstore.Automation
                 case BuildTarget.StandaloneWindows64:
                 case BuildTarget.StandaloneOSX:
                 case BuildTarget.StandaloneLinux64:
-                case BuildTarget.iOS:
                     return Directory.GetParent(path).FullName;
+                case BuildTarget.iOS:
+                    return path;
                 default:
                     return string.Empty;
             }
