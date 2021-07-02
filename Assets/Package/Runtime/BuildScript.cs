@@ -34,6 +34,13 @@ namespace GameWorkstore.Automation
     public class BuildStandalone : BuildBase
     {
         public ScriptingImplementation ScriptingBackend = ScriptingImplementation.IL2CPP;
+        public string[] AdditionalFolders = new string[0];
+    }
+
+    [Serializable]
+    public class BuildAppleIOS : BuildBase
+    {
+        public string[] AdditionalFolders = new string[0];
     }
 
     [Serializable]
@@ -84,7 +91,7 @@ namespace GameWorkstore.Automation
 
         [Header("iOS")]
         public bool ViewBuildIOS = false;
-        [ConditionalField("ViewBuildIOS")] public BuildBase BuildIOS = new BuildBase();
+        [ConditionalField("ViewBuildIOS")] public BuildAppleIOS BuildIOS = new BuildAppleIOS();
 
         [Header("Windows")]
         public bool ViewBuildWindows = false;

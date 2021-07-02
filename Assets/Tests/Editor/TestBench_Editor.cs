@@ -26,4 +26,84 @@ public class TestBench_Editor
         var success = Directory.Exists(path);
         Assert.AreEqual(true,success);
     }
+
+    [Test]
+    public void CustomFolderIsCopiedWindows()
+    {
+        var buildScript = BuildClass.GetBuildScript();
+        Assert.IsNotNull(buildScript);
+        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/Windows/");
+        if (Directory.Exists(path))
+        {
+            Directory.Delete(path, true);
+        }
+        BuildClass.BuildWindows();
+        path = Path.Combine(path, "Packages");
+        bool folderExists = Directory.Exists(path);
+        Assert.AreEqual(true,folderExists);
+    }
+
+    [Test]
+    public void CustomFolderIsCopiedLinux()
+    {
+        var buildScript = BuildClass.GetBuildScript();
+        Assert.IsNotNull(buildScript);
+        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/Linux/");
+        if (Directory.Exists(path))
+        {
+            Directory.Delete(path, true);
+        }
+        BuildClass.BuildLinux();
+        path = Path.Combine(path, "Packages");
+        bool folderExists = Directory.Exists(path);
+        Assert.AreEqual(true, folderExists);
+    }
+
+    [Test]
+    public void CustomFolderIsCopiedGameServerWindows()
+    {
+        var buildScript = BuildClass.GetBuildScript();
+        Assert.IsNotNull(buildScript);
+        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/GameServerWindows/");
+        if (Directory.Exists(path))
+        {
+            Directory.Delete(path, true);
+        }
+        BuildClass.BuildGameServerWindows();
+        path = Path.Combine(path, "Packages");
+        bool folderExists = Directory.Exists(path);
+        Assert.AreEqual(true, folderExists);
+    }
+
+    [Test]
+    public void CustomFolderIsCopiedGameServerLinux()
+    {
+        var buildScript = BuildClass.GetBuildScript();
+        Assert.IsNotNull(buildScript);
+        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/GameServerLinux/");
+        if (Directory.Exists(path))
+        {
+            Directory.Delete(path, true);
+        }
+        BuildClass.BuildGameServerLinux();
+        path = Path.Combine(path, "Packages");
+        bool folderExists = Directory.Exists(path);
+        Assert.AreEqual(true, folderExists);
+    }
+
+    [Test]
+    public void CustomFolderIsCopiedAppleIOS()
+    {
+        var buildScript = BuildClass.GetBuildScript();
+        Assert.IsNotNull(buildScript);
+        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/iOS/");
+        if (Directory.Exists(path))
+        {
+            Directory.Delete(path, true);
+        }
+        BuildClass.BuildIOS();
+        path = Path.Combine(path, "Packages");
+        bool folderExists = Directory.Exists(path);
+        Assert.AreEqual(true, folderExists);
+    }
 }

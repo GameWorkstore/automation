@@ -86,7 +86,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildScript.BuildIOS)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildIOS.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildWindows()
@@ -113,7 +118,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildScript.BuildWindows)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildWindows.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildMacOS()
@@ -140,7 +150,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildScript.BuildMacOS)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildMacOS.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildLinux()
@@ -167,7 +182,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildScript.BuildLinux)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildLinux.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildGameServerWindows()
@@ -194,7 +214,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildScript.BuildGameServerWindows,BuildOptions.EnableHeadlessMode)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildGameServerWindows.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildGameServerLinux()
@@ -221,7 +246,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildScript.BuildGameServerLinux,BuildOptions.EnableHeadlessMode)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildGameServerLinux.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildGameServerMacOS()
@@ -249,7 +279,12 @@ namespace GameWorkstore.Automation
                 options = GetOptions(buildConfig,BuildOptions.EnableHeadlessMode)
             };
 
-            ProcessReport(BuildPipeline.BuildPlayer(buildOptions));
+            var buildReport = BuildPipeline.BuildPlayer(buildOptions);
+            if (ProcessReportIsSuccess(buildReport))
+            {
+                CopyAdditionalFolders(buildOptions, buildScript.BuildGameServerMacOS.AdditionalFolders);
+            }
+            ProcessReport(buildReport);
         }
 
         public static void BuildUWP()
@@ -421,6 +456,55 @@ namespace GameWorkstore.Automation
             PlayerSettings.Android.keystorePass = buildScript.BuildAndroid.KeyStoreSettings.KeystorePassword;
             PlayerSettings.Android.keyaliasName = buildScript.BuildAndroid.KeyStoreSettings.AliasName;
             PlayerSettings.Android.keyaliasPass = buildScript.BuildAndroid.KeyStoreSettings.AliasPassword;
+        }
+
+        private static void CopyAdditionalFolders(BuildPlayerOptions buildOptions, string[] additionalFolders)
+        {
+            string targetRoot = GetFolder(buildOptions);
+            if (string.IsNullOrEmpty(targetRoot)) return;
+
+            foreach(var additionalFolder in additionalFolders)
+            {
+                var source = Path.Combine(GetProjectPath(), additionalFolder);
+                var target = Path.Combine(targetRoot, additionalFolder);
+                if (Directory.Exists(target))
+                {
+                    Directory.Delete(target, true);
+                }
+                CopyFilesRecursively(source, target);
+            }
+        }
+
+        private static void CopyFilesRecursively(string sourcePath, string targetPath)
+        {
+            Directory.CreateDirectory(targetPath);
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
+            {
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+            }
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
+            {
+                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+            }
+        }
+
+        public static string GetFolder(BuildPlayerOptions buildOptions)
+        {
+            var path = Path.Combine(GetProjectPath(), buildOptions.locationPathName);
+            switch (buildOptions.target)
+            {
+                case BuildTarget.StandaloneWindows:
+                case BuildTarget.StandaloneWindows64:
+                case BuildTarget.StandaloneOSX:
+                case BuildTarget.StandaloneLinux64:
+                case BuildTarget.iOS:
+                    return Directory.GetParent(path).FullName;
+                default:
+                    return string.Empty;
+            }
         }
     }
 }

@@ -32,19 +32,23 @@ MonoBehaviour:
       KeystorePassword: testkey123
       AliasName: testalias
       AliasPassword: testalias123
-  ViewBuildIOS: 0
+  ViewBuildIOS: 1
   BuildIOS:
     UseCustomScenes: 0
     Development: 0
     Scenes:
       List: []
-  ViewBuildWindows: 0
+    AdditionalFolders:
+    - Packages
+  ViewBuildWindows: 1
   BuildWindows:
     UseCustomScenes: 0
     Development: 0
     Scenes:
       List: []
-    ScriptingBackend: 1
+    ScriptingBackend: 0
+    AdditionalFolders:
+    - Packages
   ViewBuildMacOS: 0
   BuildMacOS:
     UseCustomScenes: 0
@@ -52,13 +56,16 @@ MonoBehaviour:
     Scenes:
       List: []
     ScriptingBackend: 1
-  ViewBuildLinux: 0
+    AdditionalFolders: []
+  ViewBuildLinux: 1
   BuildLinux:
     UseCustomScenes: 0
     Development: 0
     Scenes:
       List: []
-    ScriptingBackend: 1
+    ScriptingBackend: 0
+    AdditionalFolders:
+    - Packages
   ViewBuildUWP: 0
   BuildUWP:
     UseCustomScenes: 0
@@ -71,13 +78,15 @@ MonoBehaviour:
     Development: 0
     Scenes:
       List: []
-  ViewBuildGameServerWindows: 0
+  ViewBuildGameServerWindows: 1
   BuildGameServerWindows:
     UseCustomScenes: 0
     Development: 0
     Scenes:
       List: []
-    ScriptingBackend: 1
+    ScriptingBackend: 0
+    AdditionalFolders:
+    - Packages
   ViewBuildGameServerLinux: 1
   BuildGameServerLinux:
     UseCustomScenes: 1
@@ -87,6 +96,8 @@ MonoBehaviour:
       - Scene: Assets/Scenes/Sample.unity
         Guid: e7184e0cf43524eeb943a9cedb593c1e
     ScriptingBackend: 0
+    AdditionalFolders:
+    - Packages
   ViewBuildGameServerMacOS: 1
   BuildGameServerMacOS:
     UseCustomScenes: 1
@@ -96,3 +107,4 @@ MonoBehaviour:
       - Scene: Assets/Scenes/Sample.unity
         Guid: e7184e0cf43524eeb943a9cedb593c1e
     ScriptingBackend: 0
+    AdditionalFolders: []
