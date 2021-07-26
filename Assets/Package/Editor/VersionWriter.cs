@@ -38,7 +38,7 @@ namespace GameWorkstore.Automation
                     "\tpublic static class GameVersion\r\n" +
                     "\t{\r\n" +
                         "\t"+ FormatVar("IosBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
-                        "\t" + FormatVar("AndroidBundleVersion", PlayerSettings.iOS.buildNumber) + "\r\n" +
+                        "\t" + FormatVar("AndroidBundleVersion", PlayerSettings.Android.bundleVersionCode.ToString()) + "\r\n" +
                     "\t}\r\n" +
                 "}";
 
@@ -48,7 +48,7 @@ namespace GameWorkstore.Automation
                 Directory.CreateDirectory(directoryPath);
             }
 
-            var filePath = GetFilePath(script);
+            var filePath = GetAbsoluteFilePath(script);
 
             var currentText = string.Empty;
             if (File.Exists(filePath))
@@ -61,6 +61,7 @@ namespace GameWorkstore.Automation
 
             File.WriteAllText(filePath, content);
             AssetDatabase.Refresh();
+            AssetDatabase.ImportAsset(GetLocalFilePath(script));
         }
 
         private static string FormatVar(string varName, string varValue)
@@ -68,18 +69,28 @@ namespace GameWorkstore.Automation
             return "\tpublic const string " + varName + " = \"" + varValue + "\";";
         }
 
-        public static string GetFilePath(BuildScript script)
+        public static string GetAbsoluteFilePath(BuildScript script)
         {
             return Path.Combine(GetDirectory(script), FileName);
         }
 
+        public static string GetLocalFilePath(BuildScript script)
+        {
+            return Path.Combine("Assets",GetLocalDirectory(script), FileName);
+        }
+
         public static string GetDirectory(BuildScript script)
+        {
+            return Path.Combine(Application.dataPath, GetLocalDirectory(script));
+        }
+
+        public static string GetLocalDirectory(BuildScript script)
         {
             if (script.GameVersionWriterConfig.Path.StartsWith("/"))
             {
-                return Path.Combine(Application.dataPath, script.GameVersionWriterConfig.Path.Substring(1));
+                return script.GameVersionWriterConfig.Path.Substring(1);
             }
-            return Path.Combine(Application.dataPath, script.GameVersionWriterConfig.Path);
+            return script.GameVersionWriterConfig.Path;
         }
     }
 }

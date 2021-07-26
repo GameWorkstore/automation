@@ -443,8 +443,8 @@ namespace GameWorkstore.Automation
         [MenuItem("Help/Automation/SetAndroidCredentials")]
         public static void SetAndroidCredentials()
         {
-            var buildScript = BuildClass.GetBuildScript();
-            BuildClass.SetAndroidSignCredentials(buildScript);
+            var buildScript = GetBuildScript();
+            SetAndroidSignCredentials(buildScript);
         }
 
         public static void SetAndroidSignCredentials(BuildScript buildScript)

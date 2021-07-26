@@ -8,7 +8,7 @@
       "hash": "acec284154b11e5fa7193b0adfb4c52f682b49f0"
     },
     "com.unity.2d.animation": {
-      "version": "6.0.3",
+      "version": "6.0.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -38,12 +38,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.psdimporter": {
-      "version": "5.0.3",
+      "version": "5.0.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "5.0.0",
-        "com.unity.2d.animation": "6.0.3",
+        "com.unity.2d.animation": "6.0.4",
         "com.unity.2d.sprite": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -55,7 +55,7 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
-      "version": "6.0.0",
+      "version": "6.0.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -122,7 +122,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.24",
+      "version": "1.1.27",
       "depth": 1,
       "source": "registry",
       "dependencies": {

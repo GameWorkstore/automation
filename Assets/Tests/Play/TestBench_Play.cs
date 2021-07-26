@@ -30,7 +30,7 @@ public class TestBench_Play
     {
         var buildScript = BuildClass.GetBuildScript();
 
-        var filePath = VersionWriter.GetFilePath(buildScript);
+        var filePath = VersionWriter.GetAbsoluteFilePath(buildScript);
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
