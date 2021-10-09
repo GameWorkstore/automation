@@ -5,14 +5,17 @@ Automate your projects with this powerful tool with many build options!
 
 At package.json, add these 2 lines of code:
 ```json
-"com.gameworkstore.automation": "git://github.com/GameWorkstore/automation.git"
-"com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git"
+"com.gameworkstore.automation": "git://github.com/GameWorkstore/automation.git#1.1.1"
+"com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git#1.1.6"
 ```
 
 And wait for unity to download and compile the package.
 
-for update package for a newer version, install UpmGitExtension and update on [ Window > Package Manager ]!
-> https://github.com/mob-sakai/UpmGitExtension
+you can upgrade your version by including the release version at end of the link:
+```json
+"com.gameworkstore.automation": "git://github.com/GameWorkstore/automation.git#1.1.1"
+"com.gameworkstore.patterns": "git://github.com/GameWorkstore/patterns.git#1.1.6"
+```
 
 # Automate Builds
 
