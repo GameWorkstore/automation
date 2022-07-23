@@ -115,11 +115,11 @@ namespace GameWorkstore.Automation
 
         [Header("GameServer - Windows")]
         public bool ViewBuildGameServerWindows = false;
-        [ConditionalField("ViewBuildGameServerWindows")] public BuildStandalone BuildGameServerWindows = new BuildStandalone();
+        [ConditionalField("ViewBuildGameServerWindows")] public BuildStandalone BuildServerWindows = new BuildStandalone();
 
         [Header("GameServer - Linux")]
         public bool ViewBuildGameServerLinux = false;
-        [ConditionalField("ViewBuildGameServerLinux")] public BuildStandalone BuildGameServerLinux = new BuildStandalone();
+        [ConditionalField("ViewBuildGameServerLinux")] public BuildStandalone BuildServerLinux = new BuildStandalone();
 
         [Header("GameServer - MacOS")]
         public bool ViewBuildGameServerMacOS = false;
@@ -128,18 +128,18 @@ namespace GameWorkstore.Automation
         [Header("Build")]
         public HelpBox build = new HelpBox("Build Now", HelpBoxType.Info);
 
-        [ButtonMethod] public static void Android() { BuildClass.BuildAndroid(); }
-        [ButtonMethod] public static void AppleIOS() { BuildClass.BuildIOS(); }
+        [ButtonMethod] public void Android() { BuildClass.BuildAndroid(this); }
+        [ButtonMethod] public void AppleIOS() { BuildClass.BuildIOS(this); }
 
-        [ButtonMethod] public static void Windows() { BuildClass.BuildWindows(); }
-        [ButtonMethod] public static void MacOS() { BuildClass.BuildMacOS(); }
-        [ButtonMethod] public static void Linux() { BuildClass.BuildLinux(); }
+        [ButtonMethod] public void Windows() { BuildClass.BuildWindows(this); }
+        [ButtonMethod] public void MacOS() { BuildClass.BuildMacOS(this); }
+        [ButtonMethod] public void Linux() { BuildClass.BuildLinux(this); }
 
-        [ButtonMethod] public static void WebGL() { BuildClass.BuildWebGL(); }
-        [ButtonMethod] public static void UWP() { BuildClass.BuildUWP(); }
+        [ButtonMethod] public void WebGL() { BuildClass.BuildWebGL(this); }
+        [ButtonMethod] public void UWP() { BuildClass.BuildUWP(this); }
 
-        [ButtonMethod] public static void GameServerWindows() { BuildClass.BuildGameServerWindows(); }
-        [ButtonMethod] public static void GameServerLinux() { BuildClass.BuildGameServerLinux(); }
-        [ButtonMethod] public static void GameServerMacOS() { BuildClass.BuildGameServerMacOS(); }
+        [ButtonMethod] public void ServerWindows() { BuildClass.BuildServerWindows(this); }
+        [ButtonMethod] public void ServerLinux() { BuildClass.BuildServerLinux(this); }
+        [ButtonMethod] public void ServerMacOS() { BuildClass.BuildServerMacOS(this); }
     }
 }

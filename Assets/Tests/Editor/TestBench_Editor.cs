@@ -5,7 +5,7 @@ using NUnit.Framework;
 public class TestBench_Editor
 {
     [Test]
-    public void BuildGameServerMacOS()
+    public void BuildServerMacOS()
     {
         var buildScript = BuildClass.GetBuildScript();
         Assert.IsNotNull(buildScript);
@@ -20,7 +20,7 @@ public class TestBench_Editor
             }
         }
         
-        BuildClass.BuildGameServerMacOS();
+        BuildClass.BuildServerMacOS();
         var success = Directory.Exists(path);
         Assert.AreEqual(true,success);
     }
@@ -58,7 +58,7 @@ public class TestBench_Editor
     }
 
     [Test]
-    public void CustomFolderIsCopiedGameServerWindows()
+    public void CustomFolderIsCopiedServerWindows()
     {
         var buildScript = BuildClass.GetBuildScript();
         Assert.IsNotNull(buildScript);
@@ -67,14 +67,14 @@ public class TestBench_Editor
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildGameServerWindows();
+        BuildClass.BuildServerWindows();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true, folderExists);
     }
 
     [Test]
-    public void CustomFolderIsCopiedGameServerLinux()
+    public void CustomFolderIsCopiedServerLinux()
     {
         var buildScript = BuildClass.GetBuildScript();
         Assert.IsNotNull(buildScript);
@@ -83,7 +83,7 @@ public class TestBench_Editor
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildGameServerLinux();
+        BuildClass.BuildServerLinux();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true, folderExists);

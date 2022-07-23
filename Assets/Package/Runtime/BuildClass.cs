@@ -11,6 +11,11 @@ namespace GameWorkstore.Automation
         public static void BuildAndroid()
         {
             var buildScript = GetBuildScript();
+            BuildAndroid(buildScript);
+        }
+
+        public static void BuildAndroid(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -67,6 +72,11 @@ namespace GameWorkstore.Automation
         public static void BuildIOS()
         {
             var buildScript = GetBuildScript();
+            BuildIOS(buildScript);
+        }
+
+        public static void BuildIOS(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -97,6 +107,11 @@ namespace GameWorkstore.Automation
         public static void BuildWindows()
         {
             var buildScript = GetBuildScript();
+            BuildWindows(buildScript);
+        }
+
+        public static void BuildWindows(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -129,6 +144,11 @@ namespace GameWorkstore.Automation
         public static void BuildMacOS()
         {
             var buildScript = GetBuildScript();
+            BuildMacOS(buildScript);
+        }
+
+        public static void BuildMacOS(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -161,6 +181,11 @@ namespace GameWorkstore.Automation
         public static void BuildLinux()
         {
             var buildScript = GetBuildScript();
+            BuildLinux(buildScript);
+        }
+        
+        public static void BuildLinux(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -190,9 +215,14 @@ namespace GameWorkstore.Automation
             ProcessReport(buildReport);
         }
 
-        public static void BuildGameServerWindows()
+        public static void BuildServerWindows()
         {
             var buildScript = GetBuildScript();
+            BuildServerWindows(buildScript);
+        }
+        
+        public static void BuildServerWindows(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -203,28 +233,33 @@ namespace GameWorkstore.Automation
             }
 
             //Backend
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildGameServerWindows.ScriptingBackend);
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildServerWindows.ScriptingBackend);
 
             //Options
             var buildOptions = new BuildPlayerOptions
             {
-                scenes = buildScript.BuildGameServerWindows.GetScenes(),
+                scenes = buildScript.BuildServerWindows.GetScenes(),
                 locationPathName = "Build/GameServerWindows/" + buildScript.GameName + ".exe",
                 target = BuildTarget.StandaloneWindows64,
-                options = GetOptions(buildScript.BuildGameServerWindows,BuildOptions.EnableHeadlessMode)
+                subtarget = (int)StandaloneBuildSubtarget.Server,
+                options = GetOptions(buildScript.BuildServerWindows)
             };
 
             var buildReport = BuildPipeline.BuildPlayer(buildOptions);
             if (ProcessReportIsSuccess(buildReport))
             {
-                CopyAdditionalFolders(buildOptions, buildScript.BuildGameServerWindows.AdditionalFolders);
+                CopyAdditionalFolders(buildOptions, buildScript.BuildServerWindows.AdditionalFolders);
             }
             ProcessReport(buildReport);
         }
-
-        public static void BuildGameServerLinux()
+        public static void BuildServerLinux()
         {
             var buildScript = GetBuildScript();
+            BuildServerLinux(buildScript);
+        }
+        
+        public static void BuildServerLinux(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -235,28 +270,34 @@ namespace GameWorkstore.Automation
             }
 
             //Backend
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildGameServerLinux.ScriptingBackend);
+            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildServerLinux.ScriptingBackend);
 
             //Options
             var buildOptions = new BuildPlayerOptions
             {
-                scenes = buildScript.BuildGameServerLinux.GetScenes(),
+                scenes = buildScript.BuildServerLinux.GetScenes(),
                 locationPathName = "Build/GameServerLinux/" + buildScript.GameName,
                 target = BuildTarget.StandaloneLinux64,
-                options = GetOptions(buildScript.BuildGameServerLinux,BuildOptions.EnableHeadlessMode)
+                subtarget = (int)StandaloneBuildSubtarget.Server,
+                options = GetOptions(buildScript.BuildServerLinux)
             };
 
             var buildReport = BuildPipeline.BuildPlayer(buildOptions);
             if (ProcessReportIsSuccess(buildReport))
             {
-                CopyAdditionalFolders(buildOptions, buildScript.BuildGameServerLinux.AdditionalFolders);
+                CopyAdditionalFolders(buildOptions, buildScript.BuildServerLinux.AdditionalFolders);
             }
             ProcessReport(buildReport);
         }
 
-        public static void BuildGameServerMacOS()
+        public static void BuildServerMacOS()
         {
             var buildScript = GetBuildScript();
+            BuildServerMacOS(buildScript);
+        }
+        
+        public static void BuildServerMacOS(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -276,7 +317,8 @@ namespace GameWorkstore.Automation
                 scenes = buildConfig.GetScenes(),
                 locationPathName = "Build/GameServerMacOS/" + buildScript.GameName + ".app",
                 target = BuildTarget.StandaloneOSX,
-                options = GetOptions(buildConfig,BuildOptions.EnableHeadlessMode)
+                subtarget = (int)StandaloneBuildSubtarget.Server,
+                options = GetOptions(buildConfig)
             };
 
             var buildReport = BuildPipeline.BuildPlayer(buildOptions);
@@ -290,6 +332,11 @@ namespace GameWorkstore.Automation
         public static void BuildUWP()
         {
             var buildScript = GetBuildScript();
+            BuildUWP(buildScript);
+        }
+        
+        public static void BuildUWP(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -306,7 +353,6 @@ namespace GameWorkstore.Automation
                     DebugMessege.Log("Failed to parse game version.", DebugLevel.ERROR);
                 }
             }
-            
 
             //Backend
             //Always IL2CPP
@@ -327,6 +373,11 @@ namespace GameWorkstore.Automation
         public static void BuildWebGL()
         {
             var buildScript = GetBuildScript();
+            BuildWebGL(buildScript);
+        }
+        
+        public static void BuildWebGL(BuildScript buildScript)
+        {
             if (!Validate(buildScript)) return;
 
             //Version
@@ -394,11 +445,26 @@ namespace GameWorkstore.Automation
 
         public static BuildScript GetBuildScript(bool logPath = false)
         {
-            foreach (var guid in AssetDatabase.FindAssets("t:BuildScript"))
+            var buildScript = Arg("-buildscript");
+            if (string.IsNullOrEmpty(buildScript))
             {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                if (logPath) Debug.Log("[GameWorkstore.Automation] BuildScript at path:" + path);
-                return AssetDatabase.LoadAssetAtPath<BuildScript>(path);
+                foreach (var guid in AssetDatabase.FindAssets("t:BuildScript"))
+                {
+                    var path = AssetDatabase.GUIDToAssetPath(guid);
+                    if (logPath) Debug.Log("[GameWorkstore.Automation] BuildScript at path:" + path);
+                    return AssetDatabase.LoadAssetAtPath<BuildScript>(path);
+                }
+            }
+            else
+            {
+                foreach (var guid in AssetDatabase.FindAssets("t:BuildScript"))
+                {
+                    var path = AssetDatabase.GUIDToAssetPath(guid);
+                    //if (logPath)
+                    Debug.Log("[GameWorkstore.Automation] BuildScript at path:" + path);
+                    if (!path.EndsWith(buildScript)) continue;
+                    return AssetDatabase.LoadAssetAtPath<BuildScript>(path);
+                }
             }
             return null;
         }
