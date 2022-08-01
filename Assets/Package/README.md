@@ -23,7 +23,7 @@ On a windows .bat file, you invoke unity to build your game as the example below
 ```bat
 set CODEVERSION=23
 set VERSION=1.0.%CODEVERSION%
-call %UNITYPATH% -executeMethod GameWorkstore.Automation.BuildClass.BuildClass.BuildAndroid -projectPath %WORKSPACE% -gameversion %VERSION% -bundleversion %CODEVERSION%
+call %UNITYPATH% -executeMethod GameWorkstore.Automation.BuildClass.BuildAndroid -projectPath %WORKSPACE% -gameversion %VERSION% -bundleversion %CODEVERSION%
 ```
 
 You can also use Jenkins to attribute BUILD_NUMBER to CODEVERSION
@@ -35,6 +35,18 @@ or you can sum with a static number
 ```bat
 set /a "CODEVERSION=%BUILD_NUMBER%+0"
 ```
+
+# Build Methods
+
+* BuildWindows
+* BuildLinux
+* BuildAndroid
+* BuildIOS
+* BuildServerWindows
+* BuildServerLinux
+* BuildServerMacOS
+* BuildWebGL
+* BuildUWP
 
 # Contributions
 
