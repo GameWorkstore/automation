@@ -408,10 +408,15 @@ namespace GameWorkstore.Automation
 			}
             gameVersion = string.IsNullOrEmpty(g)? PlayerSettings.bundleVersion : g;
 
-            var bv = Arg("-bundleversion");
+            var bv = Arg("-gamebundleversion");
 			if (string.IsNullOrEmpty(bv))
 			{
                 bv = Arg("-androidVersionCode");
+                if (string.IsNullOrEmpty(bv))
+                {
+                    Debug.LogWarning("-bundleversion is legacy and conflicts with Unity iOS bundleversion arg. Use -gamebundleversion instead.");
+                    bv = Arg("-bundleversion");
+                }
             }
             bundleVersion = int.TryParse(bv, out bundleVersion)? bundleVersion : 1;
 
