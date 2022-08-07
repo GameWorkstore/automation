@@ -37,15 +37,15 @@ set /a "CODEVERSION=%BUILD_NUMBER%+0"
 ```
 
 # Arguments
--builscript
+## -builscript
 name of the BuildScript asset.
 The target buildscript of your game, like 'BuildScript.asset'.
 don't forget to include '.asset' at end. 
 
--gameversion
+## -gameversion
 public version for the app/game. Use 1.0.0 for best results (applestore don't allow larger versions, some appstore are following).
 
--gamebundleversion
+## -gamebundleversion
 exclusive code version for android and iOS. must be a integer.
 
 # Build Methods
