@@ -17,6 +17,12 @@ namespace GameWorkstore.Automation
         public static void BuildAndroid(BuildScript buildScript)
         {
             if (!Validate(buildScript)) return;
+            
+            //PackageName
+            if (buildScript.BuildAndroid.UsePackageName && !string.IsNullOrEmpty(buildScript.BuildAndroid.PackageName))
+            {
+                PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, buildScript.BuildAndroid.PackageName);
+            }
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
@@ -78,6 +84,12 @@ namespace GameWorkstore.Automation
         public static void BuildIOS(BuildScript buildScript)
         {
             if (!Validate(buildScript)) return;
+
+            //PackageName
+            if (buildScript.BuildIOS.UsePackageName && !string.IsNullOrEmpty(buildScript.BuildIOS.PackageName))
+            {
+                PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, buildScript.BuildIOS.PackageName);
+            }
 
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)

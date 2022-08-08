@@ -40,6 +40,8 @@ namespace GameWorkstore.Automation
     [Serializable]
     public class BuildAppleIOS : BuildBase
     {
+        public bool UsePackageName = false;
+        [ConditionalField("UsePackageName")] public string PackageName;
         public string[] AdditionalFolders = new string[0];
     }
 
@@ -47,6 +49,8 @@ namespace GameWorkstore.Automation
     public class BuildAndroid : BuildBase
     {
         public bool UseKeystore = false;
+        public bool UsePackageName = false;
+        [ConditionalField("UsePackageName")] public string PackageName;
         public bool BuildAPK = false;
         public bool BuildAAB = true;
         public ScriptingImplementation ScriptingBackend = ScriptingImplementation.IL2CPP;
