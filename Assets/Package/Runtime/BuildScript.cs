@@ -13,11 +13,20 @@ namespace GameWorkstore.Automation
     }
 
     [Serializable]
+    public class ScriptDefinitions
+    {
+        public string[] Definitions = new string[0];
+    }
+
+
+    [Serializable]
     public class BuildBase
     {
         public bool UseCustomScenes = false;
+        public bool UseCustomScriptDefinitions = false;
         public bool Development = false;
         [ConditionalField("UseCustomScenes")] public CustomScenes Scenes = new CustomScenes();
+        [ConditionalField("UseCustomScriptDefinitions")] public ScriptDefinitions ScriptDefinitions = new ScriptDefinitions();
 
         public string[] GetScenes()
         {
@@ -127,7 +136,7 @@ namespace GameWorkstore.Automation
 
         [Header("GameServer - MacOS")]
         public bool ViewBuildGameServerMacOS = false;
-        [ConditionalField(("ViewBuildGameServerMacOS"))] public BuildStandalone BuildGameServerMacOS = new BuildStandalone();
+        [ConditionalField(("ViewBuildGameServerMacOS"))] public BuildStandalone BuildServerMacOS = new BuildStandalone();
         
         [Header("Build")]
         public HelpBox build = new HelpBox("Build Now", HelpBoxType.Info);

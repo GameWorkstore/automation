@@ -32,6 +32,15 @@ namespace GameWorkstore.Automation
                 PlayerSettings.Android.bundleVersionCode = bundleVersion;
             }
 
+            //SetScriptDefinitions
+            if (buildScript.BuildAndroid.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Android,
+                    buildScript.BuildAndroid.ScriptDefinitions.Definitions
+                );
+            }
+
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, buildScript.BuildAndroid.ScriptingBackend);
 
@@ -91,6 +100,15 @@ namespace GameWorkstore.Automation
                 PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, buildScript.BuildIOS.PackageName);
             }
 
+            //SetScriptDefinitions
+            if (buildScript.BuildIOS.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.iOS,
+                    buildScript.BuildIOS.ScriptDefinitions.Definitions
+                );
+            }
+
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
@@ -133,6 +151,15 @@ namespace GameWorkstore.Automation
                 PlayerSettings.bundleVersion = version;
             }
 
+            //SetScriptDefinitions
+            if (buildScript.BuildWindows.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Standalone,
+                    buildScript.BuildWindows.ScriptDefinitions.Definitions
+                );
+            }
+
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildWindows.ScriptingBackend);
 
@@ -168,6 +195,15 @@ namespace GameWorkstore.Automation
             {
                 Version(out var version, out _);
                 PlayerSettings.bundleVersion = version;
+            }
+
+            //SetScriptDefinitions
+            if (buildScript.BuildMacOS.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Standalone,
+                    buildScript.BuildMacOS.ScriptDefinitions.Definitions
+                );
             }
 
             //Backend
@@ -207,6 +243,15 @@ namespace GameWorkstore.Automation
                 PlayerSettings.bundleVersion = version;
             }
 
+            //SetScriptDefinitions
+            if (buildScript.BuildLinux.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Standalone,
+                    buildScript.BuildLinux.ScriptDefinitions.Definitions
+                );
+            }
+
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildLinux.ScriptingBackend);
 
@@ -244,6 +289,15 @@ namespace GameWorkstore.Automation
                 PlayerSettings.bundleVersion = version;
             }
 
+            //SetScriptDefinitions
+            if (buildScript.BuildServerWindows.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Server,
+                    buildScript.BuildServerWindows.ScriptDefinitions.Definitions
+                );
+            }
+
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildScript.BuildServerWindows.ScriptingBackend);
 
@@ -279,6 +333,15 @@ namespace GameWorkstore.Automation
             {
                 Version(out var version, out _);
                 PlayerSettings.bundleVersion = version;
+            }
+
+            //SetScriptDefinitions
+            if (buildScript.BuildServerLinux.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Server,
+                    buildScript.BuildServerLinux.ScriptDefinitions.Definitions
+                );
             }
 
             //Backend
@@ -319,7 +382,16 @@ namespace GameWorkstore.Automation
                 PlayerSettings.bundleVersion = version;
             }
 
-            var buildConfig = buildScript.BuildGameServerMacOS;
+            //SetScriptDefinitions
+            if (buildScript.BuildServerMacOS.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.Server,
+                    buildScript.BuildServerMacOS.ScriptDefinitions.Definitions
+                );
+            }
+
+            var buildConfig = buildScript.BuildServerMacOS;
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, buildConfig.ScriptingBackend);
 
@@ -336,7 +408,7 @@ namespace GameWorkstore.Automation
             var buildReport = BuildPipeline.BuildPlayer(buildOptions);
             if (ProcessReportIsSuccess(buildReport))
             {
-                CopyAdditionalFolders(buildOptions, buildScript.BuildGameServerMacOS.AdditionalFolders);
+                CopyAdditionalFolders(buildOptions, buildScript.BuildServerMacOS.AdditionalFolders);
             }
             ProcessReport(buildReport);
         }
@@ -364,6 +436,15 @@ namespace GameWorkstore.Automation
                 {
                     DebugMessege.Log("Failed to parse game version.", DebugLevel.ERROR);
                 }
+            }
+
+            //SetScriptDefinitions
+            if (buildScript.BuildUWP.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.WindowsStoreApps,
+                    buildScript.BuildUWP.ScriptDefinitions.Definitions
+                );
             }
 
             //Backend
@@ -397,6 +478,15 @@ namespace GameWorkstore.Automation
             {
                 Version(out var version, out _);
                 PlayerSettings.bundleVersion = version;
+            }
+
+            //SetScriptDefinitions
+            if (buildScript.BuildWebGL.UseCustomScriptDefinitions)
+            {
+                PlayerSettings.SetScriptingDefineSymbols(
+                    UnityEditor.Build.NamedBuildTarget.WebGL,
+                    buildScript.BuildWebGL.ScriptDefinitions.Definitions
+                );
             }
 
             //Options

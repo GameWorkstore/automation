@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12163007ee079c45b98839ab1003048, type: 3}
+  m_Name: BuildScript-Development
+  m_EditorClassIdentifier: 
+  GameName: Automation
+  GameVersionWriterConfig:
+    Enabled: 1
+    Path: Scripts/Version/
+    Namespace: Unset.Namespace
+  ViewBuildAndroid: 0
+  BuildAndroid:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 1
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions:
+      - DEVELOPMENT_AMAZON
+    UseKeystore: 0
+    UsePackageName: 0
+    PackageName: 
+    BuildAPK: 0
+    BuildAAB: 1
+    ScriptingBackend: 1
+    KeyStoreSettings:
+      KeystorePath: 
+      KeystorePassword: 
+      AliasName: 
+      AliasPassword: 
+  ViewBuildIOS: 0
+  BuildIOS:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+    UsePackageName: 0
+    PackageName: 
+    AdditionalFolders: []
+  ViewBuildWindows: 1
+  BuildWindows:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 1
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions:
+      - DEVELOPMENT_AMAZON
+    ScriptingBackend: 1
+    AdditionalFolders: []
+  ViewBuildMacOS: 0
+  BuildMacOS:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+    ScriptingBackend: 1
+    AdditionalFolders: []
+  ViewBuildLinux: 0
+  BuildLinux:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+    ScriptingBackend: 1
+    AdditionalFolders: []
+  ViewBuildUWP: 0
+  BuildUWP:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+  ViewBuildWebGL: 0
+  BuildWebGL:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+  ViewBuildGameServerWindows: 0
+  BuildServerWindows:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+    ScriptingBackend: 1
+    AdditionalFolders: []
+  ViewBuildGameServerLinux: 0
+  BuildServerLinux:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+    ScriptingBackend: 1
+    AdditionalFolders: []
+  ViewBuildGameServerMacOS: 0
+  BuildGameServerMacOS:
+    UseCustomScenes: 0
+    UseCustomScriptDefinitions: 0
+    Development: 0
+    Scenes:
+      List: []
+    ScriptDefinitions:
+      Definitions: []
+    ScriptingBackend: 1
+    AdditionalFolders: []
