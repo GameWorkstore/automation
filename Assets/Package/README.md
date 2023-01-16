@@ -50,6 +50,7 @@ exclusive code version for android and iOS. must be a integer.
 # Build Methods
 
 * BuildWindows
+* BuildMacOS
 * BuildLinux
 * BuildAndroid
 * BuildIOS
