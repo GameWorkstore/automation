@@ -56,7 +56,7 @@ namespace GameWorkstore.Automation
                 var buildOptions = new BuildPlayerOptions
                 {
                     scenes = buildScript.BuildAndroid.GetScenes(),
-                    locationPathName = subPathAab + buildScript.GameName + ".aab",
+                    locationPathName = subPathAab + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".aab",
                     target = BuildTarget.Android,
                     options = GetOptions(buildScript.BuildAndroid)
                 };
@@ -74,7 +74,7 @@ namespace GameWorkstore.Automation
                 var buildOptions = new BuildPlayerOptions
                 {
                     scenes = buildScript.BuildAndroid.GetScenes(),
-                    locationPathName = subPathAPK + buildScript.GameName + ".apk",
+                    locationPathName = subPathAPK + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".apk",
                     target = BuildTarget.Android,
                     options = GetOptions(buildScript.BuildAndroid)
                 };
@@ -121,7 +121,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildIOS.GetScenes(),
-                locationPathName = "Build/iOS/" + buildScript.GameName,
+                locationPathName = "Build/iOS/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_"),
                 target = BuildTarget.iOS,
                 options = GetOptions(buildScript.BuildIOS)
             };
@@ -167,7 +167,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildWindows.GetScenes(),
-                locationPathName = "Build/Windows/" + buildScript.GameName + ".exe",
+                locationPathName = "Build/Windows/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".exe",
                 target = BuildTarget.StandaloneWindows64,
                 options = GetOptions(buildScript.BuildWindows)
             };
@@ -213,7 +213,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildMacOS.GetScenes(),
-                locationPathName = "Build/MacOS/" + buildScript.GameName + ".app",
+                locationPathName = "Build/MacOS/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".app",
                 target = BuildTarget.StandaloneOSX,
                 options = GetOptions(buildScript.BuildMacOS)
             };
@@ -259,7 +259,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildLinux.GetScenes(),
-                locationPathName = "Build/Linux/" + buildScript.GameName,
+                locationPathName = "Build/Linux/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_"),
                 target = BuildTarget.StandaloneLinux64,
                 options = GetOptions(buildScript.BuildLinux)
             };
@@ -305,7 +305,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildServerWindows.GetScenes(),
-                locationPathName = "Build/GameServerWindows/" + buildScript.GameName + ".exe",
+                locationPathName = "Build/GameServerWindows/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".exe",
                 target = BuildTarget.StandaloneWindows64,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
                 options = GetOptions(buildScript.BuildServerWindows)
@@ -351,7 +351,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildScript.BuildServerLinux.GetScenes(),
-                locationPathName = "Build/GameServerLinux/" + buildScript.GameName,
+                locationPathName = "Build/GameServerLinux/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_"),
                 target = BuildTarget.StandaloneLinux64,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
                 options = GetOptions(buildScript.BuildServerLinux)
@@ -399,7 +399,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = buildConfig.GetScenes(),
-                locationPathName = "Build/GameServerMacOS/" + buildScript.GameName + ".app",
+                locationPathName = "Build/GameServerMacOS/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".app",
                 target = BuildTarget.StandaloneOSX,
                 subtarget = (int)StandaloneBuildSubtarget.Server,
                 options = GetOptions(buildConfig)
