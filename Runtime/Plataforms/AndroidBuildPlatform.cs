@@ -50,10 +50,8 @@ namespace GameWorkstore.Automation
             Directory.CreateDirectory(path);
         }
 
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-            
             //PackageName
             if (UsePackageName && !string.IsNullOrEmpty(PackageName))
             {

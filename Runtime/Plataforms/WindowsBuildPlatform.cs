@@ -11,10 +11,8 @@ namespace GameWorkstore.Automation
     [CreateAssetMenu(fileName = nameof(WindowsBuildPlatform), menuName = "Automation/" + nameof(WindowsBuildPlatform))]
     public class WindowsBuildPlatform : StandaloneBuildPlatform
     {
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {

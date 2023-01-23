@@ -16,10 +16,8 @@ namespace GameWorkstore.Automation
         [ConditionalField("UsePackageName")] public string PackageName;
         public string[] AdditionalFolders = new string[0];
 
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-
             //PackageName
             if (UsePackageName && !string.IsNullOrEmpty(PackageName))
             {

@@ -11,10 +11,8 @@ namespace GameWorkstore.Automation
     [CreateAssetMenu(fileName = nameof(LinuxBuildPlatform), menuName = "Automation/" + nameof(LinuxBuildPlatform))]
     public class LinuxBuildPlatform : StandaloneBuildPlatform
     {
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {

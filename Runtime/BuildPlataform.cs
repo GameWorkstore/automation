@@ -17,7 +17,7 @@ namespace GameWorkstore.Automation
         public bool Development = false;
         [ConditionalField("UseCustomScenes")] public CustomScenes Scenes = new CustomScenes();
         [ConditionalField("UseCustomScriptDefinitions")] public ScriptDefinitions ScriptDefinitions = new ScriptDefinitions();
-        
+
         public void InitializeScriptable(BuildScript buildScript)
         {
             this.buildScript = buildScript;
@@ -106,7 +106,13 @@ namespace GameWorkstore.Automation
         }
 
         [ButtonMethod]
-        public abstract void Build();
+        public virtual void Build() 
+        {
+            if (!Validate(buildScript)) return;
+        }
+
+        public abstract void OnBuild();
+
 
         public static bool Validate(BuildScript buildScript)
         {

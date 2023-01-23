@@ -7,10 +7,8 @@ namespace GameWorkstore.Automation
     [CreateAssetMenu(fileName = nameof(UWPBuildPlatform), menuName = "Automation/" + nameof(UWPBuildPlatform))]
     public class UWPBuildPlatform : BuildPlataform
     {
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {

@@ -11,10 +11,8 @@ namespace GameWorkstore.Automation
     [CreateAssetMenu(fileName = nameof(MacOSBuildPlatform), menuName = "Automation/" + nameof(MacOSBuildPlatform))]
     public class MacOSBuildPlatform : StandaloneBuildPlatform
     {
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {

@@ -6,10 +6,8 @@ namespace GameWorkstore.Automation
     [CreateAssetMenu(fileName = nameof(ServerLinuxBuildPlatform), menuName = "Automation/" + nameof(ServerLinuxBuildPlatform))]
     public class ServerLinuxBuildPlatform : StandaloneBuildPlatform
     {
-        public override void Build()
+        public override void OnBuild()
         {
-            if (!Validate(buildScript)) return;
-
             //Version
             if (!UnityEditorInternal.InternalEditorUtility.isHumanControllingUs)
             {
