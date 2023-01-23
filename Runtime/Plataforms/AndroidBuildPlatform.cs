@@ -31,12 +31,16 @@ namespace GameWorkstore.Automation
         public static void SetAndroidSignCredentials(BuildScript buildScript)
         {
             if(buildScript == null) return;
-            if (!buildScript.AndroidBuildPlatform.UseKeystore) return;
-            PlayerSettings.Android.useCustomKeystore = true;
-            PlayerSettings.Android.keystoreName = GetProjectPath() + buildScript.AndroidBuildPlatform.KeyStoreSettings.KeystorePath;
-            PlayerSettings.Android.keystorePass = buildScript.AndroidBuildPlatform.KeyStoreSettings.KeystorePassword;
-            PlayerSettings.Android.keyaliasName = buildScript.AndroidBuildPlatform.KeyStoreSettings.AliasName;
-            PlayerSettings.Android.keyaliasPass = buildScript.AndroidBuildPlatform.KeyStoreSettings.AliasPassword;
+            if(buildScript.TryGet(out AndroidBuildPlatform androidBuildPlatform))
+            {
+                if (!androidBuildPlatform.UseKeystore) return;
+                PlayerSettings.Android.useCustomKeystore = true;
+                PlayerSettings.Android.keystoreName = GetProjectPath() + androidBuildPlatform.KeyStoreSettings.KeystorePath;
+                PlayerSettings.Android.keystorePass = androidBuildPlatform.KeyStoreSettings.KeystorePassword;
+                PlayerSettings.Android.keyaliasName = androidBuildPlatform.KeyStoreSettings.AliasName;
+                PlayerSettings.Android.keyaliasPass = androidBuildPlatform.KeyStoreSettings.AliasPassword;
+            }
+            
         }
 
         public static void MakeDirectory(string relativePath)

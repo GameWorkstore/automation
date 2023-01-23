@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using GameWorkstore.Patterns;
+using System.Collections.Generic;
 
 namespace GameWorkstore.Automation
 {
@@ -38,23 +39,57 @@ namespace GameWorkstore.Automation
     public class BuildScript : ScriptableObject
     {
 
-        public AndroidBuildPlatform AndroidBuildPlatform;
-        public IOSBuildPlatform IOSBuildPlatform;
-        public WindowsBuildPlatform WindowsBuildPlatform;
-        public MacOSBuildPlatform MacOSBuildPlatform;
-        public LinuxBuildPlatform LinuxBuildPlatform;
-        public ServerWindowsBuildPlatform ServerWindowsBuildPlatform;
-        public ServerLinuxBuildPlatform ServerLinuxBuildPlatform;
-        public ServerMacOSBuildPlatform ServerMacOSBuildPlatform;
-        public UWPBuildPlatform UWPBuildPlatform;
-        public WebGLBuildPlatform WebGLBuildPlatform;
-
         [Header("Generic Settings")]
         public string GameName;
-
         public AutoVersionWriter GameVersionWriterConfig;
-        
-        [Header("Build")]
-        public HelpBox build = new HelpBox("Build Now", HelpBoxType.Info);
+
+        public List<BuildPlataform> BuildPlataforms;
+
+        public bool Has<T>() where T : BuildPlataform
+        {
+            if (BuildPlataforms != null)
+            {
+                foreach (var p in BuildPlataforms)
+                {
+                    if (p is T)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;  
+        }
+
+        public bool TryGet<T>(out T buildPlataform) where T : BuildPlataform
+        {
+            if (BuildPlataforms != null)
+            {
+                foreach (var p in BuildPlataforms)
+                {
+                    if (p is T t)
+                    {
+                        buildPlataform = t;
+                        return true;
+                    }
+                }
+            }
+            buildPlataform = null;
+            return false;  
+        }
+
+        public void TryBuild<T>() where T : BuildPlataform
+        {
+            if (BuildPlataforms != null)
+            {
+                foreach (var p in BuildPlataforms)
+                {
+                    if (p is T t)
+                    {
+                        t.Build();
+                    }
+                }
+            }
+            Debug.LogError("No build platform in build script found!"); 
+        }
     }
 }

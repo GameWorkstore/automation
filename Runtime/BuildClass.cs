@@ -8,61 +8,61 @@ namespace GameWorkstore.Automation
         public static void BuildAndroid()
         {
             var buildScript = GetBuildScript();
-            buildScript.AndroidBuildPlatform.Build();
+            buildScript.TryBuild<AndroidBuildPlatform>();
         }
 
         public static void BuildIOS()
         {
             var buildScript = GetBuildScript();
-            buildScript.IOSBuildPlatform.Build();
+            buildScript.TryBuild<IOSBuildPlatform>();
         }
 
         public static void BuildWindows()
         {
             var buildScript = GetBuildScript();
-            buildScript.WindowsBuildPlatform.Build();
+            buildScript.TryBuild<WindowsBuildPlatform>();
         }
 
         public static void BuildMacOS()
         {
             var buildScript = GetBuildScript();
-            buildScript.MacOSBuildPlatform.Build();
+            buildScript.TryBuild<MacOSBuildPlatform>();
         }
 
         public static void BuildLinux()
         {
             var buildScript = GetBuildScript();
-            buildScript.LinuxBuildPlatform.Build();
+            buildScript.TryBuild<LinuxBuildPlatform>();
         }
 
         public static void BuildServerWindows()
         {
             var buildScript = GetBuildScript();
-            buildScript.ServerWindowsBuildPlatform.Build();
+            buildScript.TryBuild<ServerWindowsBuildPlatform>();
         }
         
         public static void BuildServerLinux()
         {
             var buildScript = GetBuildScript();
-            buildScript.ServerLinuxBuildPlatform.Build();
+            buildScript.TryBuild<ServerLinuxBuildPlatform>();
         }
 
         public static void BuildServerMacOS()
         {
             var buildScript = GetBuildScript();
-            buildScript.ServerMacOSBuildPlatform.Build();
+            buildScript.TryBuild<ServerMacOSBuildPlatform>();
         }
 
         public static void BuildUWP()
         {
             var buildScript = GetBuildScript();
-            buildScript.UWPBuildPlatform.Build();
+            buildScript.TryBuild<UWPBuildPlatform>();
         }
 
         public static void BuildWebGL()
         {
             var buildScript = GetBuildScript();
-            buildScript.WebGLBuildPlatform.Build();
+            buildScript.TryBuild<WebGLBuildPlatform>();
         }
 
         public static string Arg(string argument)
