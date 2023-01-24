@@ -37,12 +37,12 @@ namespace GameworkStore.Automation.Editor
             // EditorGUI.BeginDisabledGroup(buildScript.Has<T>());
             if (GUILayout.Button("New "+name+" Plataform"))
             {
-                MakeNewAndroidBuildPlatform<T>(buildScript, name);
+                MakeNewBuildPlatform<T>(buildScript, name);
             }
             // EditorGUI.EndDisabledGroup();
         }
 
-        public static void MakeNewAndroidBuildPlatform<T>(BuildScript buildScript, string name) where T : BuildPlataform
+        public static void MakeNewBuildPlatform<T>(BuildScript buildScript, string name) where T : BuildPlataform
         {
             if(buildScript.Has<T>()) return;
             T bp = CreateInstance<T>();
