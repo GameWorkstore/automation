@@ -122,10 +122,10 @@ namespace GameWorkstore.Automation
         public virtual void Build() 
         {
             if (!Validate(buildScript)) return;
+            OnBuild();
         }
 
         public abstract void OnBuild();
-
 
         public static bool Validate(BuildScript buildScript)
         {
