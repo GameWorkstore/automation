@@ -45,7 +45,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = GetScenes(),
-                locationPathName = "Build/iOS/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_"),
+                locationPathName = "Build/iOS/" + GetBuildName(),
                 target = BuildTarget.iOS,
                 options = GetOptions()
             };

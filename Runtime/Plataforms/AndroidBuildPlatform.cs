@@ -90,7 +90,7 @@ namespace GameWorkstore.Automation
                 var buildOptions = new BuildPlayerOptions
                 {
                     scenes = GetScenes(),
-                    locationPathName = subPathAab + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".aab",
+                    locationPathName = subPathAab + GetBuildName() + ".aab",
                     target = BuildTarget.Android,
                     options = GetOptions()
                 };
@@ -108,7 +108,7 @@ namespace GameWorkstore.Automation
                 var buildOptions = new BuildPlayerOptions
                 {
                     scenes = GetScenes(),
-                    locationPathName = subPathAPK + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".apk",
+                    locationPathName = subPathAPK + GetBuildName() + ".apk",
                     target = BuildTarget.Android,
                     options = GetOptions()
                 };

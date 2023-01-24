@@ -36,7 +36,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = GetScenes(),
-                locationPathName = "Build/Windows/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".exe",
+                locationPathName = "Build/Windows/" + GetBuildName() + ".exe",
                 target = BuildTarget.StandaloneWindows64,
                 options = GetOptions()
             };

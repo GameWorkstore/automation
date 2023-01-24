@@ -36,7 +36,7 @@ namespace GameWorkstore.Automation
             var buildOptions = new BuildPlayerOptions
             {
                 scenes = GetScenes(),
-                locationPathName = "Build/MacOS/" + buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_") + ".app",
+                locationPathName = "Build/MacOS/" + GetBuildName() + ".app",
                 target = BuildTarget.StandaloneOSX,
                 options = GetOptions()
             };
