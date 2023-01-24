@@ -8,7 +8,6 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(LinuxBuildPlatform), menuName = "Automation/" + nameof(LinuxBuildPlatform))]
     public class LinuxBuildPlatform : StandaloneBuildPlatform
     {
         public override void OnBuild()

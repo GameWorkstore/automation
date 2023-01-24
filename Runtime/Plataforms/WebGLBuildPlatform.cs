@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(WebGLBuildPlatform), menuName = "Automation/" + nameof(WebGLBuildPlatform))]
     public class WebGLBuildPlatform : BuildPlataform
     {
         public override void OnBuild()

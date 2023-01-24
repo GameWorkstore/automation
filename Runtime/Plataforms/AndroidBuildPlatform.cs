@@ -6,7 +6,6 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(AndroidBuildPlatform), menuName = "Automation/"+nameof(AndroidBuildPlatform))]
     public class AndroidBuildPlatform : BuildPlataform
     {
         [Header("Android options")]

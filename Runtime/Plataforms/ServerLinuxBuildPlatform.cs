@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(ServerLinuxBuildPlatform), menuName = "Automation/" + nameof(ServerLinuxBuildPlatform))]
     public class ServerLinuxBuildPlatform : StandaloneBuildPlatform
     {
         public override void OnBuild()

@@ -4,7 +4,6 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(UWPBuildPlatform), menuName = "Automation/" + nameof(UWPBuildPlatform))]
     public class UWPBuildPlatform : BuildPlataform
     {
         public override void OnBuild()

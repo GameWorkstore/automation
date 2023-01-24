@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(ServerMacOSBuildPlatform), menuName = "Automation/" + nameof(ServerMacOSBuildPlatform))]
     public class ServerMacOSBuildPlatform : StandaloneBuildPlatform
     {
         public override void OnBuild()

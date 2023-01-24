@@ -8,7 +8,6 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(IOSBuildPlatform), menuName = "Automation/" + nameof(IOSBuildPlatform))]
     public class IOSBuildPlatform : BuildPlataform
     {
 

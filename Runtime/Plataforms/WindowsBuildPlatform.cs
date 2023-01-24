@@ -8,7 +8,6 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(WindowsBuildPlatform), menuName = "Automation/" + nameof(WindowsBuildPlatform))]
     public class WindowsBuildPlatform : StandaloneBuildPlatform
     {
         public override void OnBuild()

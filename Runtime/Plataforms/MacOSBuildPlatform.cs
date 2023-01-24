@@ -8,7 +8,6 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    [CreateAssetMenu(fileName = nameof(MacOSBuildPlatform), menuName = "Automation/" + nameof(MacOSBuildPlatform))]
     public class MacOSBuildPlatform : StandaloneBuildPlatform
     {
         public override void OnBuild()
