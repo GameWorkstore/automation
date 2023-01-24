@@ -43,7 +43,7 @@ namespace GameWorkstore.Automation
         public string GameName;
         public AutoVersionWriter GameVersionWriterConfig;
 
-        public List<BuildPlataform> BuildPlataforms;
+        [HideInInspector] public List<BuildPlataform> BuildPlataforms;
 
         public bool Has<T>() where T : BuildPlataform
         {
