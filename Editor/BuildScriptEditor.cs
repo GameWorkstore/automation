@@ -34,12 +34,10 @@ namespace GameworkStore.Automation.Editor
         public static void ShowButtonCreate<T>(BuildScript buildScript, string name) where T : BuildPlataform
         {
             if(buildScript.Has<T>()) return;
-            // EditorGUI.BeginDisabledGroup(buildScript.Has<T>());
-            if (GUILayout.Button("New "+name+" Plataform"))
+            if (GUILayout.Button("New "+ObjectNames.NicifyVariableName(name)))
             {
                 MakeNewBuildPlatform<T>(buildScript, name);
             }
-            // EditorGUI.EndDisabledGroup();
         }
 
         public static void MakeNewBuildPlatform<T>(BuildScript buildScript, string name) where T : BuildPlataform
