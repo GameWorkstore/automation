@@ -17,7 +17,7 @@ namespace GameWorkstore.Automation
         public bool Development = false;
         [ConditionalField("UseCustomScenes")] public CustomScenes Scenes = new CustomScenes();
         [ConditionalField("UseCustomScriptDefinitions")] public ScriptDefinitions ScriptDefinitions = new ScriptDefinitions();
-        public bool GenerateBuildNameWithNewFormat;
+        public bool GenerateBuildNameWithVersion;
 
         public void InitializeScriptable(BuildScript buildScript)
         {
@@ -26,7 +26,7 @@ namespace GameWorkstore.Automation
 
         public String GetBuildName()
         {
-            if(GenerateBuildNameWithNewFormat)
+            if(GenerateBuildNameWithVersion)
             {
                 return buildScript.GameName.ToLower().Replace(" ","_") + "_" + PlayerSettings.bundleVersion.Replace(".","_");
             }
