@@ -43,13 +43,13 @@ namespace GameWorkstore.Automation
         public string GameName;
         public AutoVersionWriter GameVersionWriterConfig;
 
-        [HideInInspector] public List<BuildPlataform> BuildPlataforms;
+        [HideInInspector] public List<BuildPlatform> BuildPlatforms;
 
-        public bool Has<T>() where T : BuildPlataform
+        public bool Has<T>() where T : BuildPlatform
         {
-            if (BuildPlataforms != null)
+            if (BuildPlatforms != null)
             {
-                foreach (var p in BuildPlataforms)
+                foreach (var p in BuildPlatforms)
                 {
                     if (p is T)
                     {
@@ -60,11 +60,11 @@ namespace GameWorkstore.Automation
             return false;  
         }
 
-        public bool TryGet<T>(out T buildPlataform) where T : BuildPlataform
+        public bool TryGet<T>(out T buildPlataform) where T : BuildPlatform
         {
-            if (BuildPlataforms != null)
+            if (BuildPlatforms != null)
             {
-                foreach (var p in BuildPlataforms)
+                foreach (var p in BuildPlatforms)
                 {
                     if (p is T t)
                     {
@@ -77,11 +77,11 @@ namespace GameWorkstore.Automation
             return false;  
         }
 
-        public void TryBuild<T>() where T : BuildPlataform
+        public void TryBuild<T>() where T : BuildPlatform
         {
-            if (BuildPlataforms != null)
+            if (BuildPlatforms != null)
             {
-                foreach (var p in BuildPlataforms)
+                foreach (var p in BuildPlatforms)
                 {
                     if (p is T t)
                     {

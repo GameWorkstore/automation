@@ -31,7 +31,7 @@ namespace GameworkStore.Automation.Editor
 
         }
 
-        public static void ShowButtonCreate<T>(BuildScript buildScript, string name) where T : BuildPlataform
+        public static void ShowButtonCreate<T>(BuildScript buildScript, string name) where T : BuildPlatform
         {
             if(buildScript.Has<T>()) return;
             if (GUILayout.Button("New "+ObjectNames.NicifyVariableName(name)))
@@ -40,7 +40,7 @@ namespace GameworkStore.Automation.Editor
             }
         }
 
-        public static void MakeNewBuildPlatform<T>(BuildScript buildScript, string name) where T : BuildPlataform
+        public static void MakeNewBuildPlatform<T>(BuildScript buildScript, string name) where T : BuildPlatform
         {
             if(buildScript.Has<T>()) return;
             T bp = CreateInstance<T>();
@@ -48,9 +48,9 @@ namespace GameworkStore.Automation.Editor
             PosCreateBuildInstance(buildScript, bp);
         }
 
-        public static void PosCreateBuildInstance(BuildScript buildScript, BuildPlataform bp)
+        public static void PosCreateBuildInstance(BuildScript buildScript, BuildPlatform bp)
         {
-            buildScript.BuildPlataforms.Add(bp);
+            buildScript.BuildPlatforms.Add(bp);
             bp.InitializeScriptable(buildScript);
 
             AssetDatabase.AddObjectToAsset(bp, buildScript);

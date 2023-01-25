@@ -6,7 +6,7 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    public class AndroidBuildPlatform : BuildPlataform
+    public class AndroidBuildPlatform : BuildPlatform
     {
         [Header("Android options")]
         public bool UseKeystore = false;

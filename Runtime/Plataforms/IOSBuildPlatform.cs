@@ -8,7 +8,7 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    public class IOSBuildPlatform : BuildPlataform
+    public class IOSBuildPlatform : BuildPlatform
     {
 
         public bool UsePackageName = false;

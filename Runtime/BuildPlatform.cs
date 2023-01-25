@@ -8,7 +8,7 @@ using System.IO;
 
 namespace GameWorkstore.Automation
 {
-    public abstract class BuildPlataform : ScriptableObject
+    public abstract class BuildPlatform : ScriptableObject
     {
         public BuildScript buildScript;
         [Header("Generic options")]

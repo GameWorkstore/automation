@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameWorkstore.Automation
 {
-    public class WebGLBuildPlatform : BuildPlataform
+    public class WebGLBuildPlatform : BuildPlatform
     {
         public override void OnBuild()
         {

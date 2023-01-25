@@ -4,7 +4,7 @@ using GameWorkstore.Patterns;
 
 namespace GameWorkstore.Automation
 {
-    public class UWPBuildPlatform : BuildPlataform
+    public class UWPBuildPlatform : BuildPlatform
     {
         public override void OnBuild()
         {
