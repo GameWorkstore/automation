@@ -43,7 +43,7 @@ namespace GameWorkstore.Automation
         public string GameName;
         public AutoVersionWriter GameVersionWriterConfig;
 
-        [HideInInspector] public List<BuildPlatform> BuildPlatforms;
+        public List<BuildPlatform> BuildPlatforms;
 
         public bool Has<T>() where T : BuildPlatform
         {
@@ -89,6 +89,7 @@ namespace GameWorkstore.Automation
                     }
                 }
             }
+            Console.WriteLine("No build platform in build script found!"); 
             Debug.LogError("No build platform in build script found!"); 
         }
     }
