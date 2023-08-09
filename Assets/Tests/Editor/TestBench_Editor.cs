@@ -7,10 +7,10 @@ public class TestBench_Editor
     [Test]
     public void BuildServerMacOS()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
 
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/GameServerMacOS/" + buildScript.GameName + ".app");
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/GameServerMacOS/" + buildScript.GameName + ".app");
         if (Directory.Exists(path))
         {
             var parent = Directory.GetParent(path);
@@ -19,8 +19,8 @@ public class TestBench_Editor
                 Directory.Delete(parent.FullName,true);
             }
         }
-        
-        BuildClass.BuildServerMacOS();
+
+        buildScript.TryBuild<ServerMacOSBuildPlatform>();
         var success = Directory.Exists(path);
         Assert.AreEqual(true,success);
     }
@@ -28,14 +28,14 @@ public class TestBench_Editor
     [Test]
     public void CustomFolderIsCopiedWindows()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/Windows/");
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/Windows/");
         if (Directory.Exists(path))
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildWindows();
+        buildScript.TryBuild<WindowsBuildPlatform>();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true,folderExists);
@@ -44,14 +44,14 @@ public class TestBench_Editor
     [Test]
     public void CustomFolderIsCopiedLinux()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/Linux/");
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/Linux/");
         if (Directory.Exists(path))
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildLinux();
+        buildScript.TryBuild<LinuxBuildPlatform>();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true, folderExists);
@@ -60,14 +60,14 @@ public class TestBench_Editor
     [Test]
     public void CustomFolderIsCopiedServerWindows()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/GameServerWindows/");
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/GameServerWindows/");
         if (Directory.Exists(path))
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildServerWindows();
+        buildScript.TryBuild<ServerWindowsBuildPlatform>();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true, folderExists);
@@ -76,14 +76,14 @@ public class TestBench_Editor
     [Test]
     public void CustomFolderIsCopiedServerLinux()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/GameServerLinux/");
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/GameServerLinux/");
         if (Directory.Exists(path))
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildServerLinux();
+        buildScript.TryBuild<ServerLinuxBuildPlatform>();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true, folderExists);
@@ -92,14 +92,14 @@ public class TestBench_Editor
     [Test]
     public void CustomFolderIsCopiedAppleIOS()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
-        var path = Path.Combine(BuildClass.GetProjectPath(), "Build/iOS/", buildScript.GameName);
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/iOS/", buildScript.GameName);
         if (Directory.Exists(path))
         {
             Directory.Delete(path, true);
         }
-        BuildClass.BuildIOS();
+        buildScript.TryBuild<IOSBuildPlatform>();
         path = Path.Combine(path, "Packages");
         bool folderExists = Directory.Exists(path);
         Assert.AreEqual(true, folderExists);

@@ -2,14 +2,13 @@ using System.IO;
 using GameWorkstore.Automation;
 using NUnit.Framework;
 using UnityEditor;
-using UnityEngine;
 
 public class TestBench_Play
 {
     [Test]
     public void BuildScriptIsPresent()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
         Assert.IsNotNull(buildScript);
     }
 
@@ -28,7 +27,7 @@ public class TestBench_Play
     [Test]
     public void VersionWriter_WritesFile()
     {
-        var buildScript = BuildClass.GetBuildScript();
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
 
         var filePath = VersionWriter.GetAbsoluteFilePath(buildScript);
         if (File.Exists(filePath))
@@ -50,8 +49,8 @@ public class TestBench_Play
         PlayerSettings.Android.keyaliasName = string.Empty;
         PlayerSettings.Android.keyaliasPass = string.Empty;
 
-        var buildScript = BuildClass.GetBuildScript();
-        BuildClass.SetAndroidSignCredentials(buildScript);
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
+        AndroidBuildPlatform.SetAndroidSignCredentials(buildScript);
         Assert.AreEqual(true,PlayerSettings.Android.useCustomKeystore);
         Assert.AreEqual("Assets/Store/TestKeyStore.keystore",PlayerSettings.Android.keystoreName);
         Assert.AreEqual("testkey123",PlayerSettings.Android.keystorePass);

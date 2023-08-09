@@ -1,5 +1,111 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7323459600803104815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8e670a05f4ba541b39e8e558c660ea, type: 3}
+  m_Name: ServerLinuxBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  ScriptingBackend: 0
+  AdditionalFolders: []
+--- !u!114 &-5450304001116309755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223d853add24d3944b7be17d562e3a58, type: 3}
+  m_Name: LinuxBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  ScriptingBackend: 0
+  AdditionalFolders: []
+--- !u!114 &-5325342797264504826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3b121882abb1b45b54827a794e1850, type: 3}
+  m_Name: AndroidBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  UseKeystore: 1
+  UsePackageName: 0
+  PackageName: 
+  BuildAPK: 0
+  BuildAAB: 1
+  ScriptingBackend: 1
+  KeyStoreSettings:
+    KeystorePath: Assets/Store/TestKeyStore.keystore
+    KeystorePassword: testkey123
+    AliasName: testalias
+    AliasPassword: testalias123
+--- !u!114 &-1494794170793173442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a6e4c6aa6527164b818a0a1367e3c16, type: 3}
+  m_Name: IOSBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  UsePackageName: 0
+  PackageName: 
+  AdditionalFolders: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17,94 +123,154 @@ MonoBehaviour:
     Enabled: 1
     Path: /Scripts/Util/
     Namespace: Default
-  ViewBuildAndroid: 1
-  BuildAndroid:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-    UseKeystore: 1
-    BuildAPK: 0
-    BuildAAB: 1
-    ScriptingBackend: 1
-    KeyStoreSettings:
-      KeystorePath: Assets/Store/TestKeyStore.keystore
-      KeystorePassword: testkey123
-      AliasName: testalias
-      AliasPassword: testalias123
-  ViewBuildIOS: 1
-  BuildIOS:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-    AdditionalFolders:
-    - Packages
-  ViewBuildWindows: 1
-  BuildWindows:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-    ScriptingBackend: 0
-    AdditionalFolders:
-    - Packages
-  ViewBuildMacOS: 0
-  BuildMacOS:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-    ScriptingBackend: 1
-    AdditionalFolders: []
-  ViewBuildLinux: 1
-  BuildLinux:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-    ScriptingBackend: 0
-    AdditionalFolders:
-    - Packages
-  ViewBuildUWP: 0
-  BuildUWP:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-  ViewBuildWebGL: 0
-  BuildWebGL:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-  ViewBuildGameServerWindows: 1
-  BuildGameServerWindows:
-    UseCustomScenes: 0
-    Development: 0
-    Scenes:
-      List: []
-    ScriptingBackend: 0
-    AdditionalFolders:
-    - Packages
-  ViewBuildGameServerLinux: 1
-  BuildGameServerLinux:
-    UseCustomScenes: 1
-    Development: 0
-    Scenes:
-      List:
-      - Scene: Assets/Scenes/Sample.unity
-        Guid: e7184e0cf43524eeb943a9cedb593c1e
-    ScriptingBackend: 0
-    AdditionalFolders:
-    - Packages
-  ViewBuildGameServerMacOS: 1
-  BuildGameServerMacOS:
-    UseCustomScenes: 1
-    Development: 0
-    Scenes:
-      List:
-      - Scene: Assets/Scenes/Sample.unity
-        Guid: e7184e0cf43524eeb943a9cedb593c1e
-    ScriptingBackend: 0
-    AdditionalFolders: []
+  BuildPlatforms:
+  - {fileID: -5325342797264504826}
+  - {fileID: -1494794170793173442}
+  - {fileID: 2829144216489633593}
+  - {fileID: -5450304001116309755}
+  - {fileID: 6975341806460378696}
+  - {fileID: 934369159747390855}
+  - {fileID: 452952995724398469}
+  - {fileID: -7323459600803104815}
+  - {fileID: 7175172383066913928}
+  - {fileID: 8661584291240023754}
+--- !u!114 &452952995724398469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941b010c7759d214f921653254b8ba8e, type: 3}
+  m_Name: ServerMacOSBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  ScriptingBackend: 0
+  AdditionalFolders: []
+--- !u!114 &934369159747390855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94735df9b77cfac49ab70890372be4d5, type: 3}
+  m_Name: ServerWindowsBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  ScriptingBackend: 0
+  AdditionalFolders: []
+--- !u!114 &2829144216489633593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5fbb16fa20d064abf3838e4cad5c07, type: 3}
+  m_Name: WindowsBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  ScriptingBackend: 0
+  AdditionalFolders: []
+--- !u!114 &6975341806460378696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1ecd3daba82a94992103482eaeaa98, type: 3}
+  m_Name: MacOSBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+  ScriptingBackend: 0
+  AdditionalFolders: []
+--- !u!114 &7175172383066913928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0438eae0654b5842b052689afa89259, type: 3}
+  m_Name: WebGLBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
+--- !u!114 &8661584291240023754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0fc8982c7e33b4091b2a391b91e921, type: 3}
+  m_Name: UWPBuildPlatform
+  m_EditorClassIdentifier: 
+  buildScript: {fileID: 11400000}
+  UseCustomScenes: 0
+  UseCustomScriptDefinitions: 0
+  Development: 0
+  RemoveUnityLogo: 1
+  Scenes:
+    List: []
+  ScriptDefinitions:
+    Definitions: []
+  GenerateBuildNameWithVersion: 0
