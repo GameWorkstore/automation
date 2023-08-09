@@ -4,6 +4,15 @@ namespace GameWorkstore.Automation
 {
     public class MacOSBuildPlatform : StandaloneBuildPlatform
     {
+        public enum MacOSArchitecture
+        {
+            INTEL64 = 0,
+            ARM64 = 1,
+            UNIVERSAL = 2
+        };
+
+        public MacOSArchitecture Architecture = MacOSArchitecture.UNIVERSAL;
+
         public override void OnBuild()
         {
             //Version
@@ -24,6 +33,9 @@ namespace GameWorkstore.Automation
 
             //Backend
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Standalone, ScriptingBackend);
+
+            //Architecture
+            PlayerSettings.SetArchitecture(BuildTargetGroup.Standalone, (int)Architecture);
 
             //Options
             var buildOptions = new BuildPlayerOptions

@@ -764,7 +764,8 @@ PlayerSettings:
   scriptingDefineSymbols:
     Standalone: PRODUCTION_AMAZON
   additionalCompilerArguments: {}
-  platformArchitecture: {}
+  platformArchitecture:
+    Standalone: 0
   scriptingBackend:
     Standalone: 0
   il2cppCompilerConfiguration: {}

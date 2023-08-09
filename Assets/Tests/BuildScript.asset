@@ -230,6 +230,7 @@ MonoBehaviour:
   GenerateBuildNameWithVersion: 0
   ScriptingBackend: 0
   AdditionalFolders: []
+  Architecture: 0
 --- !u!114 &7175172383066913928
 MonoBehaviour:
   m_ObjectHideFlags: 0

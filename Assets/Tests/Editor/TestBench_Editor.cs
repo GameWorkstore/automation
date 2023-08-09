@@ -5,6 +5,27 @@ using NUnit.Framework;
 public class TestBench_Editor
 {
     [Test]
+    public void BuildMacOS()
+    {
+        var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
+        Assert.IsNotNull(buildScript);
+
+        var path = Path.Combine(BuildPlatform.GetProjectPath(), "Build/MacOS/" + buildScript.GameName + ".app");
+        if (Directory.Exists(path))
+        {
+            var parent = Directory.GetParent(path);
+            if (parent != null)
+            {
+                Directory.Delete(parent.FullName, true);
+            }
+        }
+
+        buildScript.TryBuild<MacOSBuildPlatform>();
+        var success = Directory.Exists(path);
+        Assert.AreEqual(true, success);
+    }
+
+    [Test]
     public void BuildServerMacOS()
     {
         var buildScript = BuildClass.GetBuildScript("BuildScript.asset");
